@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Question from "./components/Question";
 import Form from "./components/Form";
+import Answers from "./components/Answers";
 import "./assets/styles/styles.css";
 
 function App() {
@@ -92,14 +93,7 @@ function App() {
         Question number: {questionIndex + 1} out of {questions.length}
       </h1>
       <Question question={questions[index]} />
-      <div className="answers-container">
-        {questions[0].answerOptions.map((answer, answerIndex) => (
-          <button key={answerIndex}>
-            {answer.answer} <b>{answer.isCorrect ? "correct" : "incorrect"}</b>
-          </button>
-        ))}
-        <button onClick={handleNextQuestion}>Next Question</button>
-      </div>
+      <Answers questions={questions} handleNextQuestion={handleNextQuestion}/>
       <br />
     </div>
   );
