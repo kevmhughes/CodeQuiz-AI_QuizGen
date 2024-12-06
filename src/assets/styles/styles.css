@@ -1,12 +1,21 @@
 .main-container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
 }
 
 .answers-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-answer {
+  background-color: black;
+}
+
+button:disabled {
+  opacity: 85%; /* Make non-selected buttons transparent */
+  cursor: not-allowed;
 }
