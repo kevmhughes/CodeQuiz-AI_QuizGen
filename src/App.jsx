@@ -1,26 +1,34 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import {
+  handleSubmit,
+  handleChange,
+  handleNextQuestion,
+  handleShowAIQuiz,
+} from "./handlers/formhandlers";
 import Question from "./components/Question";
 import Form from "./components/Form";
 import Answers from "./components/Answers";
+import Explanation from "./components/Explanation";
 import "./assets/styles/styles.css";
+import backUpArray from "../src/utils/backUpArray";
 
 function App() {
   const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true); // Add a loading state
-  const [error, setError] = useState(null); // Add an error state to display errors
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    amount: 5,
+    amount: 1,
     topic: "",
   });
   const [values, setValues] = useState({
     amount: 1,
     topic: "",
   });
+  const [showState, setShowState] = useState(false);
   const [index, setIndex] = useState(0);
 
   const questionIndex = index;
-
   const hasFetched = useRef(false); // UseRef to track fetch status
 
   // useEffect to fetch questions only once after the first render
@@ -31,7 +39,7 @@ function App() {
     hasFetched.current = true;
 
     const fetchQuestions = async () => {
-      setLoading(true); // Ensure loading is set to true before the request
+      /* setLoading(true) */ // Ensure loading is set to true before the request
 
       try {
         const response = await axios.get(
@@ -48,53 +56,79 @@ function App() {
     };
 
     fetchQuestions(); // Fetch questions only once on mount
-  }, [formData]); // Empty dependency array ensures this runs only once on mount
+  }, [formData]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the form from refreshing the page
-    setFormData(values);
-    setValues({
-      amount: 5,
-      topic: "",
-    });
-    hasFetched.current = false;
+  const questionsToDisplay =
+    questions.length > 0 ? questions : backUpArray[0].results;
+
+  // handlers
+  const nextQuestion = () => {
+    handleNextQuestion(setIndex, questionsToDisplay);
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const submit = (e) => {
+    handleSubmit(e, setFormData, setValues, values, hasFetched);
+  };
+  const change = (e) => {
+    handleChange(e, setValues);
+  };
+  const showAIQuiz = (e) => {
+    handleShowAIQuiz(
+      e,
+      setShowState,
+      setFormData,
+      values,
+      setValues,
+      hasFetched,
+      setLoading
+    );
   };
 
   if (loading) {
     return <div>AI is generating your questions with your settings...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
+  // If no questions are available (both fetch failed and backup is empty), show a fallback message
+  if (questionsToDisplay.length === 0) {
+    return (
+      <div>No questions available at the moment. Please try again later.</div>
+    );
   }
 
-  // Handle the next question click
-  const handleNextQuestion = () => {
-    setIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
-  };
+  // Don't show the error message if we're using the backup array
+  if (error && questions.length > 0) {
+    return <div>Hello</div>; /* <div>{error}</div>; */
+  }
 
   return (
     <div className="main-container">
-      <h1>AI Powered Programming Quiz Master</h1>
-      <Form
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        values={values}
-      />
-      <h1>
-        Question number: {questionIndex + 1} out of {questions.length}
-      </h1>
-      <Question question={questions[index]} />
-      <Answers questions={questions} handleNextQuestion={handleNextQuestion}/>
-      <br />
+      {showState ? (
+        <>
+          <h1>Quiz Master</h1>
+          <h1>
+            Question: {questionIndex + 1}/{questionsToDisplay.length}
+          </h1>
+          <Question questions={questionsToDisplay} index={index} />
+          <Answers
+            questions={questionsToDisplay}
+            handleNextQuestion={nextQuestion}
+            index={index}
+          />
+          <Explanation questions={questionsToDisplay} index={index} />
+          <br />
+          <Form handleSubmit={submit} handleChange={change} values={values} />
+        </>
+      ) : (
+        <div>
+          Choose A Quiz
+          <Form
+            handleSubmit={submit}
+            handleChange={change}
+            handleShowAIQuiz={showAIQuiz}
+            values={values}
+            showState={showState}
+          />
+        </div>
+      )}
     </div>
   );
 }
