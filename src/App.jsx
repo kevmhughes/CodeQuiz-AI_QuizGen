@@ -25,8 +25,10 @@ function App() {
     amount: 1,
     topic: "",
   });
-  const [showState, setShowState] = useState(false);
+  const [showQuizPage, setShowQuizPage] = useState(false);
   const [index, setIndex] = useState(0);
+  const [showExplanationButton, setShowExplanationButton] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const questionIndex = index;
   const hasFetched = useRef(false); // UseRef to track fetch status
@@ -42,10 +44,23 @@ function App() {
       /* setLoading(true) */ // Ensure loading is set to true before the request
 
       try {
-        const response = await axios.get(
+        // AI GENERATED QUESTION
+        /* const response = await axios.get(
           `https://codequestapi.onrender.com/api/v1/questions/ai?amount=${formData.amount}&topic=${formData.topic}`
         );
-        setQuestions(response.data.results); // Update questions state
+        
+        setQuestions(response.data.results); // Update questions state */
+
+        // RANDOMLY GENERATED QUESTION
+        /* const response = await axios.get(
+          `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
+        );
+        
+        setQuestions(response.data.results);  */
+
+        // BACK UP QUESTIONS
+        setQuestions(backUpArray[0].results);
+        /* setQuestions(backUpArray[0].results); */
         setError(null); // Reset error if the request was successful
       } catch (error) {
         setError("There was an error fetching the data.");
@@ -63,10 +78,15 @@ function App() {
 
   // handlers
   const nextQuestion = () => {
-    handleNextQuestion(setIndex, questionsToDisplay);
+    handleNextQuestion(
+      setIndex,
+      questionsToDisplay,
+      setShowExplanationButton,
+      setSelectedAnswer
+    );
   };
   const submit = (e) => {
-    handleSubmit(e, setFormData, setValues, values, hasFetched);
+    handleSubmit(e, setFormData, values, setValues, hasFetched, setLoading);
   };
   const change = (e) => {
     handleChange(e, setValues);
@@ -74,7 +94,7 @@ function App() {
   const showAIQuiz = (e) => {
     handleShowAIQuiz(
       e,
-      setShowState,
+      setShowQuizPage,
       setFormData,
       values,
       setValues,
@@ -96,14 +116,14 @@ function App() {
 
   // Don't show the error message if we're using the backup array
   if (error && questions.length > 0) {
-    return <div>Hello</div>; /* <div>{error}</div>; */
+    return <div>Testing</div>; /* <div>{error}</div>; */
   }
 
   return (
     <div className="main-container">
-      {showState ? (
+      <h1>Quiz Master</h1>
+      {showQuizPage ? (
         <>
-          <h1>Quiz Master</h1>
           <h1>
             Question: {questionIndex + 1}/{questionsToDisplay.length}
           </h1>
@@ -111,22 +131,35 @@ function App() {
           <Answers
             questions={questionsToDisplay}
             handleNextQuestion={nextQuestion}
+            setShowExplanationButton={setShowExplanationButton}
+            setSelectedAnswer={setSelectedAnswer}
+            selectedAnswer={selectedAnswer}
             index={index}
           />
-          <Explanation questions={questionsToDisplay} index={index} />
+          {showExplanationButton && (
+            <Explanation questions={questionsToDisplay} index={index} />
+          )}
           <br />
-          <Form handleSubmit={submit} handleChange={change} values={values} />
+          {index + 1 === questions.length ? (
+            <Form handleSubmit={submit} handleChange={change} values={values} />
+          ) : (
+            <div></div>
+          )}
         </>
       ) : (
         <div>
-          Choose A Quiz
-          <Form
-            handleSubmit={submit}
-            handleChange={change}
-            handleShowAIQuiz={showAIQuiz}
-            values={values}
-            showState={showState}
-          />
+          <div>
+            Choose A Quiz:
+            <Form
+              handleSubmit={submit}
+              handleChange={change}
+              handleShowAIQuiz={showAIQuiz}
+              values={values}
+            />
+          </div>
+          <button style={{ width: "100%", marginTop: "1rem" }}>
+            Random Generator
+          </button>
         </div>
       )}
     </div>
