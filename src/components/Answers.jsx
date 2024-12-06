@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import { fisherYatesShuffle } from "../utils/fisher-yates-shuffle";
+import { fisherYatesShuffle } from "../utils/fisherYatesShuffle";
 
 const Answers = ({
   questions,
