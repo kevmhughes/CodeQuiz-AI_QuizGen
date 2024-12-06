@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-const Question = ({ question }) => {
+const Question = ({ questions, index }) => {
   return (
     <div>
-      {question.question}
+      {questions[index].question}
     </div>
   )
 }

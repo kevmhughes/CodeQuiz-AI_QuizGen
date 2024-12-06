@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React from 'react'
 
-const Answers = ({ questions, handleNextQuestion }) => {
+const Answers = ({ questions, handleNextQuestion, index }) => {
+    console.log("question", questions)
   return (
     <div className="answers-container">
-    {questions[0].answerOptions.map((answer, answerIndex) => (
+    {questions[index].answerOptions.map((answer, answerIndex) => (
       <button key={answerIndex}>
         {answer.answer} <b>{answer.isCorrect ? "correct" : "incorrect"}</b>
       </button>
