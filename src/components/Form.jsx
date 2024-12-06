@@ -6,7 +6,6 @@ const Form = ({
   handleChange,
   handleSubmit,
   values,
-  showState,
   handleShowAIQuiz,
 }) => {
   const topics = [
