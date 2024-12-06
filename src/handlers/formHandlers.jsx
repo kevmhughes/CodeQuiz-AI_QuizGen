@@ -48,10 +48,14 @@ export const handleShowAIQuiz = (
   values,
   setValues,
   hasFetched,
-  setLoading
+  setLoading,
+  setAiDb,
+  setRandomDb
 ) => {
-  setShowQuizPage(true);
   e.preventDefault();
+  setAiDb(true);
+  setRandomDb(false);
+  setShowQuizPage(true);
   setFormData(values);
   setValues({
     amount: 1,
