@@ -12,15 +12,16 @@ const Explanation = ({ questions, index }) => {
     setIsExplanationVisible((prevState) => !prevState);
   };
 
+  if (!questions || !questions[index]) {
+    return <div>Loading...</div>;
+  }
+
   if (!questions[index].explanation) {
-    return (
-        <>
-        </>
-    )
-  } 
+    return <></>;
+  }
 
   return (
-    <div style={{ marginTop: "1rem" }}>
+    <div style={{ marginTop: "1rem", width: "100%" }}>
       <button onClick={toggleExplanation} style={{ width: "100%" }}>
         {isExplanationVisible ? "Hide Explanation" : "Show Explanation"}
       </button>
