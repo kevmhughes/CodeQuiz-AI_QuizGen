@@ -32,7 +32,7 @@ const Form = ({
         onChange={handleChange}
         placeholder="amount"
         value={values.amount}
-        min={0}
+        min={1}
         max={10}
       />
       <select name="topic" onChange={handleChange} value={values.topic}>
