@@ -1,11 +1,35 @@
+.header-logo {
+  margin: 16px;
+  height: 30px;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
   width: 80%;
   margin: auto;
+  align-items: center;
+}
+
+.start-page-buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .answers-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -16,6 +40,34 @@
 }
 
 button:disabled {
-  opacity: 85%; /* Make non-selected buttons transparent */
+  opacity: 85%;
   cursor: not-allowed;
+}
+
+/* Loader animation */
+
+/* Define the rotating animation using @keyframes */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Style for the rotating image */
+.rotating-image {
+  width: 100px; /* Adjust the size of your image */
+  height: 100px;
+  animation: rotate 1.5s linear infinite; /* Rotate every 1.5s infinitely */
+}
+
+/* Container style for the loader */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
 }
