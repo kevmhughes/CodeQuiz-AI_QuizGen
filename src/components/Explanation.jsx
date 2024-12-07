@@ -22,7 +22,10 @@ const Explanation = ({ questions, index }) => {
 
   return (
     <div style={{ marginTop: "1rem", width: "100%" }}>
-      <button onClick={toggleExplanation} style={{ width: "100%" }}>
+      <button
+        onClick={toggleExplanation}
+        style={{ width: "100%", padding: "12px" }}
+      >
         {isExplanationVisible ? "Hide Explanation" : "Show Explanation"}
       </button>
       {/* add style to CSS file later */}
