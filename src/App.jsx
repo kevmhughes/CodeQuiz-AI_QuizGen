@@ -14,6 +14,7 @@ import ChoicesView from "./components/ChoicesView";
 import "./assets/styles/styles.css";
 import logo from "/images/logo/logo.svg";
 import backUpArray from "../src/utils/backUpArray";
+import categoryString from "../src/utils/formatCategoryString";
 import Image from "./components/Image";
 
 function App() {
@@ -150,7 +151,7 @@ function App() {
     setShowQuizPage(true);
     setFormData(values);
     setValues({
-      amount: 1,
+      amount: 10,
     });
     hasFetched.current = false;
     setAiDb(false);
@@ -165,23 +166,39 @@ function App() {
     setShowScore(false);
     setIndex(0);
     setShowQuizPage(false);
+    setScore(0);
+    setShowExplanationButton(false);
+    setSelectedAnswer(null);
+    setQuestions([]);
   };
 
   const handleSeeScore = () => {
     setShowScore(true);
+    setShowExplanationButton(false);
+    setSelectedAnswer(null);
   };
 
   const renderQuizPage = () => (
     <div className="quiz-container">
-      <div>
-        <b style={{ width: "100%" }}>
-          Question: {questionIndex + 1}/{questionsToDisplay.length}
-        </b>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <div>
+          <b>Question:</b> {questionIndex + 1}/{questionsToDisplay.length}
+        </div>
+        <div>
+          <b>Category:</b> {categoryString(formData.topic)}
+        </div>
       </div>
       <Question questions={questionsToDisplay} index={index} />
       <Answers
         questions={questionsToDisplay}
         handleNextQuestion={nextQuestion}
+        showExplanationButton={showExplanationButton}
         setShowExplanationButton={setShowExplanationButton}
         setSelectedAnswer={setSelectedAnswer}
         selectedAnswer={selectedAnswer}
@@ -194,13 +211,20 @@ function App() {
       {index + 1 === questions.length && showExplanationButton && (
         <button
           onClick={handleSeeScore}
-          style={{ width: "100%", marginTop: "1rem", marginBottom: "1rem" }}
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            marginBottom: "1rem",
+            padding: "12px",
+          }}
         >
           See Your Score
         </button>
       )}
     </div>
   );
+
+  console.log("isCorrect", questions[index]?.answerOptions);
 
   return (
     <>
@@ -218,7 +242,7 @@ function App() {
             renderQuizPage()
           ) : (
             <>
-              <h1>&lt;CodeBrain&gt;</h1>
+              <h1 style={{ fontSize: "3rem" }}>&lt;CodeBrain&gt;</h1>
               <ChoicesView
                 handleShowForm={handleShowForm}
                 showForm={showForm}
@@ -232,7 +256,7 @@ function App() {
             </>
           )
         ) : (
-          <ScoreView score={score} />
+          <ScoreView score={score} handleReturnToStart={handleReturnToStart} />
         )}
       </div>
     </>
