@@ -25,7 +25,7 @@ const ChoicesView = ({
           showForm={showForm}
         />
       ) : (
-        <div style={{ marginTop: "4rem", fontSize: "1.5rem" }}>
+        <div style={{ marginTop: "4rem", fontSize: "1.5rem", fontWeight: "bold"}}>
           Choose Your Quiz
         </div>
       )}
@@ -33,10 +33,10 @@ const ChoicesView = ({
     {!showForm && (
       <div className="start-page-buttons-container">
         <button className="choices-view-button-left" onClick={handleShowForm}>
-          AI Quiz
+          <span className="choices-view-button-left-span">AI</span>
         </button>
         <button className="choices-view-button-right" onClick={handleRandomDb}>
-          CB Quiz
+          <span className="choices-view-button-right-span">CB</span>
         </button>
       </div>
     )}
