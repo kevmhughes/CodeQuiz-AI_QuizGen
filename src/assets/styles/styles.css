@@ -1,6 +1,18 @@
+body {
+  height: 100vh;
+}
+
+button {
+  background-color: #0097b2;
+}
+
 .header-logo {
   margin: 16px;
   height: 30px;
+}
+
+.main-logo {
+  margin-top: 3rem;
 }
 
 .main-container {
@@ -9,11 +21,15 @@
   width: 80%;
   margin: auto;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .start-page-buttons-container {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
+  width: 300px;
+  height: 150px;
+  margin-top: 2rem;
 }
 
 .quiz-container {
@@ -26,6 +42,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.choices-view-button-left {
+  width: 100%;
+  background-color: #0097b2;
+  border-radius: 50px 5px 5px 50px;
+}
+
+.choices-view-button-right {
+  width: 100%;
+  background-color: #004aad;
+  border-radius: 5px 50px 50px 5px;
 }
 
 .answers-container {
@@ -42,6 +70,12 @@
 button:disabled {
   opacity: 85%;
   cursor: not-allowed;
+}
+
+.scoreview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Loader animation */
@@ -70,4 +104,26 @@ button:disabled {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
+}
+
+/* Image jump-in animation */
+
+@keyframes jumpInFromDistance {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+img.jump-in-distance {
+  animation: jumpInFromDistance 1s ease-out forwards;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
 }
