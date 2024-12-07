@@ -7,17 +7,18 @@ const Answers = ({
   handleNextQuestion,
   index,
   setIndex,
+  showExplanationButton,
   setShowExplanationButton,
   setSelectedAnswer,
   selectedAnswer,
-  setScore
+  setScore,
 }) => {
   // Function to handle when an answer is selected
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer); // Store the selected answer
     setShowExplanationButton(true); // Show the explanation button
     if (answer.isCorrect) {
-      setScore(prev => prev + 1)
+      setScore((prev) => prev + 1);
     }
   };
 
@@ -33,9 +34,10 @@ const Answers = ({
     <div className="answers-container">
       {shuffledAnswers.map((answer, answerIndex) => {
         const isCorrect = answer.isCorrect;
-        let buttonStyle = {};
+        let buttonStyle = { padding: "12px" };
+        let borderStyle = {};
 
-        // Determine the color based on whether the answer is correct or not
+        // Check if the answer is selected
         if (selectedAnswer === answer) {
           buttonStyle = {
             backgroundColor: isCorrect ? "green" : "red",
@@ -43,11 +45,20 @@ const Answers = ({
           };
         }
 
+        if (showExplanationButton) {
+          // For non-selected answers, add a border based on correctness
+          borderStyle = {
+            border: `8px solid ${isCorrect && "green"}`,
+            boxSizing: "border-box",
+            padding: `${isCorrect && "4px"}`, // Remove padding equal to the border size // Ensure the border is inside the button
+          };
+        }
+
         return (
           <button
             key={answerIndex}
             onClick={() => handleAnswerClick(answer)}
-            style={buttonStyle}
+            style={{ ...buttonStyle, ...borderStyle }}
             disabled={selectedAnswer !== null}
           >
             {answer.answer}
@@ -55,14 +66,13 @@ const Answers = ({
         );
       })}
 
-      {selectedAnswer && questions.length !== index + 1 ? (
+      {selectedAnswer && questions.length !== index + 1 && (
         <button
+          style={{ padding: "12px" }}
           onClick={() => handleNextQuestion(setIndex, setShowExplanationButton)}
         >
           Next Question
         </button>
-      ) : (
-        <div></div>
       )}
     </div>
   );
