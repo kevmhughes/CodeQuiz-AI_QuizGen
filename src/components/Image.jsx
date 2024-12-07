@@ -1,11 +1,10 @@
 /* eslint-disable */
 import React from 'react'
-import logo from "/images/logo/logo.svg";
 
-const Image = ({ handleReturnToStart, className, alt }) => {
+const Image = ({ handleReturnToStart, className, alt, src }) => {
   return (
     <img
-    src={logo}
+    src={src}
     alt={alt}
     onClick={handleReturnToStart}
     className={className}
