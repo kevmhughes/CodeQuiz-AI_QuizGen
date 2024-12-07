@@ -1,32 +1,12 @@
 /* eslint-disable */
 import React from "react";
+import { topics } from "../utils/topics";
 import GeneratorButton from "./GeneratorButton";
 
-const Form = ({
-  handleChange,
-  handleSubmit,
-  values,
-  handleShowAIQuiz,
-}) => {
-  const topics = [
-    "Algorithms",
-    "API Development",
-    "Data Structures",
-    "Databases and SQL",
-    "Debugging and Testing",
-    "Functional Programming",
-    "JavaScript Advanced Concepts",
-    "JavaScript Basics",
-    "Mobile App Development",
-    "Object-Oriented Programming (OOP)",
-    "Version Control with Git",
-    "Web Development (HTML/CSS/JS)",
-    "Web Frameworks (React, Angular, Vue)",
-  ];
-
+const Form = ({ handleChange, handleSubmit, values, handleShowAIQuiz }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      {/*       <input
         type="number"
         name="amount"
         onChange={handleChange}
@@ -34,8 +14,13 @@ const Form = ({
         value={values.amount}
         min={1}
         max={10}
-      />
-      <select name="topic" onChange={handleChange} value={values.topic}>
+      /> */}
+      <select
+        name="topic"
+        onChange={handleChange}
+        value={values.topic}
+        required
+      >
         <option value="">Select a programming topic</option>
         {topics.map((topic, index) => (
           <option key={index} value={topic.toLowerCase().replace(/\s+/g, "")}>
