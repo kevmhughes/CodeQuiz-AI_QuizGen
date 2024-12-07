@@ -6,7 +6,7 @@ import donut from "/images/images/donut.svg";
 import loser from "/images/images/loser.svg";
 import winner from "/images/images/winner.svg";
 
-const ScoreView = ({ score }) => {
+const ScoreView = ({ score, handleReturnToStart }) => {
   return (
     <div className="scoreview-container">
       {score === 10 && (
@@ -16,18 +16,18 @@ const ScoreView = ({ score }) => {
             alt="Winner image for the scoreboard"
             className="jump-in-distance"
           />
-          <div>WOW, you get a perfect score!</div>
-          <div>Your final score is {score}/10</div>
+          <div>WOW, you got a perfect score!</div>
+          <div>Your final score is {score} out of 10</div>
         </>
       )}
-      {score >= 5 && score < 9 && (
+      {score >= 5 && score < 10 && (
         <>
           <Image
             src={trophy}
             alt="Trophy image for the scoreboard"
             className="jump-in-distance"
           />
-          <div>Well done! Your final score is {score}/10</div>
+          <div>Well done! Your final score is {score} out of 10</div>
         </>
       )}
 
@@ -39,7 +39,7 @@ const ScoreView = ({ score }) => {
             className="jump-in-distance"
           />
           <div>You will do better next time!</div>
-          <div>Your final score is {score}/10</div>
+          <div>Your final score is {score} out of 10</div>
         </>
       )}
 
@@ -51,9 +51,12 @@ const ScoreView = ({ score }) => {
             className="jump-in-distance"
           />
           <div>Err, better luck next time!</div>
-          <div>Your final score is {score}/10</div>
+          <div>Your final score is {score} out of 10</div>
         </>
       )}
+      <button onClick={handleReturnToStart} style={{ marginTop: "2rem" }}>
+        Play again
+      </button>
     </div>
   );
 };
