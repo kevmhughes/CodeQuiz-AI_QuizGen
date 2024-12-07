@@ -1,13 +1,9 @@
 /* eslint-disable */
 
-import React from 'react'
+import React from "react";
 
 const Question = ({ questions, index }) => {
-  return (
-    <div>
-      {questions[index].question}
-    </div>
-  )
-}
+  return <div className="question-container">{questions[index].question}</div>;
+};
 
-export default Question
+export default Question;
