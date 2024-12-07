@@ -5,12 +5,14 @@ import {
   handleChange,
   handleNextQuestion,
   handleShowAIQuiz,
-} from "./handlers/formHandlers"
+} from "./handlers/formHandlers";
 import Question from "./components/Question";
 import Answers from "./components/Answers";
 import Explanation from "./components/Explanation";
-import AiInputChoices from "./components/AiInputChoices";
+import ScoreView from "./components/ScoreView";
+import ChoicesView from "./components/ChoicesView";
 import "./assets/styles/styles.css";
+import logo from "/images/logo/logo.svg";
 import backUpArray from "../src/utils/backUpArray";
 import Image from "./components/Image";
 
@@ -19,11 +21,11 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    amount: 1,
+    amount: 10,
     topic: "",
   });
   const [values, setValues] = useState({
-    amount: 1,
+    amount: 10,
     topic: "",
   });
   const [showQuizPage, setShowQuizPage] = useState(false);
@@ -33,6 +35,8 @@ function App() {
   const [AiDb, setAiDb] = useState(false);
   const [randomDb, setRandomDb] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
 
   const questionIndex = index;
   const hasFetched = useRef(false); // UseRef to track fetch status
@@ -80,8 +84,8 @@ function App() {
       }
     };
 
-    fetchQuestions(); // Fetch questions only once on mount
-  }, [formData, AiDb, randomDb]);
+    fetchQuestions();
+  }, [formData, AiDb, randomDb, showQuizPage]);
 
   const questionsToDisplay =
     questions.length > 0 ? questions : backUpArray[0].results;
@@ -118,7 +122,11 @@ function App() {
   if (loading) {
     return (
       <div className="loader-container">
-        <Image alt="CodeBrain app logo rotating during loading" className="rotating-image" />
+        <Image
+          alt="CodeBrain app logo rotating during loading"
+          className="rotating-image"
+          src={logo}
+        />
       </div>
     );
   }
@@ -130,9 +138,9 @@ function App() {
     );
   }
 
-  // Don't show the error message if we're using the backup array
+  // Show error if there are no questions
   if (error && questions.length > 0) {
-    return <div>Testing</div>; /* <div>{error}</div>; */
+    return <div>{error}</div>;
   }
 
   const handleRandomDb = (e) => {
@@ -153,95 +161,78 @@ function App() {
   };
 
   const handleReturnToStart = () => {
-    setShowQuizPage(false);
     setShowForm(false);
+    setShowScore(false);
+    setIndex(0);
+    setShowQuizPage(false);
   };
+
+  const handleSeeScore = () => {
+    setShowScore(true);
+  };
+
+  const renderQuizPage = () => (
+    <div className="quiz-container">
+      <div>
+        <b style={{ width: "100%" }}>
+          Question: {questionIndex + 1}/{questionsToDisplay.length}
+        </b>
+      </div>
+      <Question questions={questionsToDisplay} index={index} />
+      <Answers
+        questions={questionsToDisplay}
+        handleNextQuestion={nextQuestion}
+        setShowExplanationButton={setShowExplanationButton}
+        setSelectedAnswer={setSelectedAnswer}
+        selectedAnswer={selectedAnswer}
+        index={index}
+        setScore={setScore}
+      />
+      {showExplanationButton && (
+        <Explanation questions={questionsToDisplay} index={index} />
+      )}
+      {index + 1 === questions.length && showExplanationButton && (
+        <button
+          onClick={handleSeeScore}
+          style={{ width: "100%", marginTop: "1rem", marginBottom: "1rem" }}
+        >
+          See Your Score
+        </button>
+      )}
+    </div>
+  );
 
   return (
     <>
       <header>
         <Image
+          src={logo}
           className="header-logo"
           alt="Logo of the CodeBrain app in the header"
           handleReturnToStart={handleReturnToStart}
         />
       </header>
       <div className="main-container">
-        <h1>&lt;CodeBrain&gt;</h1>
-        {showQuizPage ? (
-          <div className="quiz-container">
-            <h1>
-              Question: {questionIndex + 1}/{questionsToDisplay.length}
-            </h1>
-            <Question questions={questionsToDisplay} index={index} />
-            <Answers
-              questions={questionsToDisplay}
-              handleNextQuestion={nextQuestion}
-              setShowExplanationButton={setShowExplanationButton}
-              setSelectedAnswer={setSelectedAnswer}
-              selectedAnswer={selectedAnswer}
-              index={index}
-            />
-            {showExplanationButton && (
-              <Explanation questions={questionsToDisplay} index={index} />
-            )}
-            <br />
-            {index + 1 === questions.length ? (
-              <button onClick={handleReturnToStart} style={{ width: "100%" }}>
-                See Your Score
-              </button>
-            ) : (
-              <div></div>
-            )}
-          </div>
+        {!showScore ? (
+          showQuizPage ? (
+            renderQuizPage()
+          ) : (
+            <>
+              <h1>&lt;CodeBrain&gt;</h1>
+              <ChoicesView
+                handleShowForm={handleShowForm}
+                showForm={showForm}
+                handleShowAIQuiz={showAIQuiz}
+                handleSubmit={submit}
+                handleChange={change}
+                values={values}
+                handleRandomDb={handleRandomDb}
+                logo={logo}
+              />
+            </>
+          )
         ) : (
-          <div className="choices-container">
-            <Image alt="Logo of the CodeBrain app"/>
-            <div className="AI-input-choices-container">
-              <div>
-                {showForm ? (
-                  <AiInputChoices
-                    handleShowAIQuiz={showAIQuiz}
-                    handleSubmit={submit}
-                    handleChange={change}
-                    values={values}
-                    showForm={showForm}
-                  />
-                ) : (
-                  <div></div>
-                )}
-              </div>
-            </div>
-            {showForm ? (
-              <div></div>
-            ) : (
-              <>
-                <div style={{ marginTop: "3rem" }}>Choose A Quiz:</div>
-                <div className="start-page-buttons-container">
-                  <button
-                    style={{
-                      width: "100%",
-                      marginTop: "1rem",
-                      backgroundColor: "#0097B2",
-                    }}
-                    onClick={handleShowForm}
-                  >
-                    AI
-                  </button>
-                  <button
-                    style={{
-                      width: "100%",
-                      marginTop: "1rem",
-                      backgroundColor: "#004AAD",
-                    }}
-                    onClick={handleRandomDb}
-                  >
-                    CB Quiz
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
+          <ScoreView score={score} />
         )}
       </div>
     </>
