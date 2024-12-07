@@ -10,11 +10,15 @@ const Answers = ({
   setShowExplanationButton,
   setSelectedAnswer,
   selectedAnswer,
+  setScore
 }) => {
   // Function to handle when an answer is selected
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer); // Store the selected answer
     setShowExplanationButton(true); // Show the explanation button
+    if (answer.isCorrect) {
+      setScore(prev => prev + 1)
+    }
   };
 
   // Shuffling answers on initial render (not on every re-render)
