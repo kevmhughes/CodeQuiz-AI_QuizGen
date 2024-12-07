@@ -2,10 +2,6 @@ body {
   height: 100vh;
 }
 
-button {
-  background-color: #0097b2;
-}
-
 .header-logo {
   margin: 16px;
   height: 30px;
@@ -21,7 +17,11 @@ button {
   width: 80%;
   margin: auto;
   align-items: center;
-  margin-top: 2rem;
+  max-width: 800px;
+}
+
+.question-container {
+  margin-top: 1rem;
 }
 
 .start-page-buttons-container {
@@ -48,12 +48,24 @@ button {
   width: 100%;
   background-color: #0097b2;
   border-radius: 50px 5px 5px 50px;
+  font-size: 2rem;
+}
+
+.choices-view-button-left-span {
+  position: relative;
+  left: 5px;
 }
 
 .choices-view-button-right {
   width: 100%;
   background-color: #004aad;
   border-radius: 5px 50px 50px 5px;
+  font-size: 2rem;
+}
+
+.choices-view-button-right-span {
+  position: relative;
+  right: 5px;
 }
 
 .answers-container {
@@ -61,6 +73,11 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.answers-container :nth-child(4) {
+  margin-bottom: 2rem;
 }
 
 .no-answer {
@@ -68,7 +85,7 @@ button {
 }
 
 button:disabled {
-  opacity: 85%;
+  opacity: 80%;
   cursor: not-allowed;
 }
 
