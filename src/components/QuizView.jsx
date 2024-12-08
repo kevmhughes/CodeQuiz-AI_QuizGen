@@ -46,13 +46,13 @@ const QuizView = ({
         index={index}
         setScore={setScore}
       />
-      {showExplanationButton && (
-        <Explanation questions={questionsToDisplay} index={index} />
-      )}
       {index + 1 === questions.length && showExplanationButton && (
         <button onClick={handleSeeScore} className="see-score-button">
           See Your Score
         </button>
+      )}
+      {showExplanationButton && (
+        <Explanation questions={questionsToDisplay} index={index} />
       )}
     </div>
   );
