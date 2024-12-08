@@ -21,7 +21,7 @@ The topics are designed to help you test your knowledge in various technologies 
 
 ## Introduction
 
-**BrainCode** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the  [**CodeQuest API**][https://codequestapi.onrender.com]) and offers a variety of ways to engage with the content:
+**BrainCode** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the  [**CodeQuest API**](https://codequestapi.onrender.com)  and offers a variety of ways to engage with the content:
 
 - Choose a **topic-based AI-generated quiz** from a predefined list of topics powered by Google Gemini.
 - Take a **random quiz** pulled from a MongoDB database for even more variety.
