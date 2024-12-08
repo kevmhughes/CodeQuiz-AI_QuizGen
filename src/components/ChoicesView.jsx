@@ -14,7 +14,7 @@ const ChoicesView = ({
   logo,
 }) => (
   <div className="choices-container">
-    <Image alt="Logo of the CodeBrain app" src={logo} className="main-logo" />
+    <Image alt="Logo of the Codequiz app" src={logo} className="main-logo" />
     <div className="AI-input-choices-container">
       {showForm ? (
         <AiInputChoices
@@ -36,7 +36,7 @@ const ChoicesView = ({
           <span className="choices-view-button-left-span">AI</span>
         </button>
         <button className="choices-view-button-right" onClick={handleRandomDb}>
-          <span className="choices-view-button-right-span">CB</span>
+          <span className="choices-view-button-right-span">CQ</span>
         </button>
       </div>
     )}
