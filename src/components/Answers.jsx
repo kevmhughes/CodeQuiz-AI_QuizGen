@@ -48,9 +48,9 @@ const Answers = ({
         if (showExplanationButton) {
           // For non-selected answers, add a border based on correctness
           borderStyle = {
-            border: `8px solid ${isCorrect && "green"}`,
+            border: `2px solid ${isCorrect && "green"}`,
             boxSizing: "border-box",
-            padding: `${isCorrect && "4px"}`, // Remove padding equal to the border size // Ensure the border is inside the button
+            padding: `${isCorrect && "10px"}`,
           };
         }
 
@@ -58,6 +58,7 @@ const Answers = ({
           <button
             key={answerIndex}
             onClick={() => handleAnswerClick(answer)}
+            className="answer-buttons"
             style={{ ...buttonStyle, ...borderStyle }}
             disabled={selectedAnswer !== null}
           >
@@ -68,7 +69,7 @@ const Answers = ({
 
       {selectedAnswer && questions.length !== index + 1 && (
         <button
-          style={{ padding: "12px" }}
+          className="next-question-button"
           onClick={() => handleNextQuestion(setIndex, setShowExplanationButton)}
         >
           Next Question
