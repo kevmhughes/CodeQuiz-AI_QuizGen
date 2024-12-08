@@ -15,7 +15,6 @@ The topics are designed to help you test your knowledge in various technologies 
 - [API Integration](#api-integration)
 - [How to Use](#how-to-use)
 - [Quiz Topics](#quiz-topics)
-- [License](#license)
 
 ---
 
@@ -119,12 +118,6 @@ CB: **Random Quiz**: Get a random quiz question from a variety of topics stored 
 2. **Answer the Questions**: Each quiz displays a series of multiple-choice questions. Select your answers to proceed through the quiz.
 
 3. **View Results**: After completing the quiz, you'll receive your score.
-
----
-
-## License
-
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
 ---
 
