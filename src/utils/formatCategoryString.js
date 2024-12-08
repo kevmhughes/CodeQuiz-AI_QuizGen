@@ -15,6 +15,8 @@ export const categoryString = (topic) => {
     return (topic = "Express");
   } else if (topic === "html") {
     return (topic = "HTML");
+  }else if (topic === "git") {
+    return (topic = "Git");
   } else if (topic === "javascript-advanced") {
     return (topic = "JavaScript - Advanced");
   } else if (topic === "javascript-basics") {

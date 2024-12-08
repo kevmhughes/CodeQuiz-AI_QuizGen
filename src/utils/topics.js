@@ -5,6 +5,7 @@ export const topics = [
   "Data Security",
   "DOM",
   "Express",
+  "Git",
   "HTML",
   "JavaScript - Advanced",
   "JavaScript - Basics",
