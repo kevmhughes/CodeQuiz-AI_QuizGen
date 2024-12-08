@@ -1,6 +1,6 @@
-# BrainCode Quiz App (WIP)
+# CodeBrain Quiz App (WIP)
 
-Welcome to **BrainCode** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **BrainCode** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz drawn from a variety of questions stored in a **MongoDB** database. 
+Welcome to **CodeBrain** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **CodeBrain** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz drawn from a variety of questions stored in a **MongoDB** database. 
 
 The topics are designed to help you test your knowledge in various technologies and frameworks, making learning fun and competitive. Whether you are a beginner or an advanced developer, there's a quiz for everyone!
 
@@ -20,7 +20,7 @@ The topics are designed to help you test your knowledge in various technologies 
 
 ## Introduction
 
-**BrainCode** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the  [**CodeQuest API**](https://codequestapi.onrender.com)  and offers a variety of ways to engage with the content:
+**CodeBrain** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the  [**CodeQuest API**](https://codequestapi.onrender.com)  and offers a variety of ways to engage with the content:
 
 - Choose a **topic-based AI-generated quiz** from a predefined list of topics powered by Google Gemini.
 - Take a **random quiz** pulled from a MongoDB database for even more variety.
@@ -74,7 +74,7 @@ The topics are designed to help you test your knowledge in various technologies 
 
 ## API Integration
 
-The **BrainCode** app pulls quiz data from the **CodeQuest API**. You can interact with the API through this key endpoint:
+The **CodeBrain** app pulls quiz data from the **CodeQuest API**. You can interact with the API through this key endpoint:
 
 - **`api/v1/questions/ai`** – Get a list of available quiz topics (see the topics section below).
 
@@ -121,4 +121,4 @@ CB: **Random Quiz**: Get a random quiz question from a variety of topics stored 
 
 ---
 
-Thank you for using **BrainCode** — happy quizzing! 🎉
+Thank you for using **CodeBrain** — happy quizzing! 🎉
