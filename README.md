@@ -66,8 +66,11 @@ The topics are designed to help you test your knowledge in various technologies 
 ### Clone the Repository
 
 `git clone https://github.com/yourusername/CodeBrain-AI_QuizGen.git`
+
 `cd CodeBrain-AI_QuizGen`
+
 `npm install`
+
 `npm run dev`
 
 ## API Integration
