@@ -12,8 +12,8 @@ const AiInputChoices = ({
   return (
     <div className="AI-input-choices-container">
       <div>
-        {showForm ? (
-          <div style={{ marginTop: "3rem" }}>
+        {showForm && (
+          <div className="AI-inputs">
             <Form
               handleSubmit={handleSubmit}
               handleChange={handleChange}
@@ -21,8 +21,6 @@ const AiInputChoices = ({
               values={values}
             />
           </div>
-        ) : (
-          <div></div>
         )}
       </div>
     </div>

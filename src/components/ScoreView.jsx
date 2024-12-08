@@ -54,7 +54,7 @@ const ScoreView = ({ score, handleReturnToStart }) => {
           <div>Your final score is {score} out of 10</div>
         </>
       )}
-      <button onClick={handleReturnToStart} style={{ marginTop: "2rem" }}>
+      <button onClick={handleReturnToStart} className="play-again-button">
         Play again
       </button>
     </div>

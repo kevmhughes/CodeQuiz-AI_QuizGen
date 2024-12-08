@@ -25,7 +25,7 @@ const ChoicesView = ({
           showForm={showForm}
         />
       ) : (
-        <div style={{ marginTop: "4rem", fontSize: "1.5rem", fontWeight: "bold"}}>
+        <div className="choose-your-quiz-text">
           Choose Your Quiz
         </div>
       )}

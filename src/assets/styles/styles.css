@@ -7,8 +7,18 @@ body {
   height: 30px;
 }
 
+.codebrain-title-text {
+  font-size: 3rem;
+}
+
 .main-logo {
   margin-top: 3rem;
+}
+
+.choose-your-quiz-text {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .main-container {
@@ -18,6 +28,14 @@ body {
   margin: auto;
   align-items: center;
   max-width: 800px;
+}
+
+.AI-inputs {
+  margin-top: 3rem;
+}
+
+.AI-generator-button {
+  width: 100%;
 }
 
 .question-container {
@@ -76,12 +94,50 @@ body {
   margin-top: 1.5rem;
 }
 
+.answer-buttons {
+  background-color: #e7e7ea;
+  color: black;
+  border: none;
+  box-shadow: aliceblue;
+}
+
+.answer-buttons:hover {
+  box-shadow: 1px 3px 5px rgb(0 0 0 / 28%);
+}
+
 .answers-container :nth-child(4) {
   margin-bottom: 2rem;
 }
 
-.no-answer {
-  background-color: black;
+.next-question-button {
+  padding: 12px;
+}
+
+.explanation-button-text-container {
+  margin-top: 1rem;
+  width: 100%; 
+}
+
+.explanation-button {
+  width: 100%;
+  padding: 12px;
+  background-color: white;
+  color: #373c44;
+  margin-bottom: 1rem;
+}
+
+.explanation-text-container {
+  font-size: 0.9rem;
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.see-score-button {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 12px;
 }
 
 button:disabled {
@@ -93,6 +149,10 @@ button:disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.play-again-button {
+  margin-top: 2rem;
 }
 
 /* Loader animation */

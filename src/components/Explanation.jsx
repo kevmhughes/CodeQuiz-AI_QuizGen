@@ -21,19 +21,17 @@ const Explanation = ({ questions, index }) => {
   }
 
   return (
-    <div style={{ marginTop: "1rem", width: "100%" }}>
+    <div className="explanation-button-text-container" >
       <button
         onClick={toggleExplanation}
-        style={{ width: "100%", padding: "12px" }}
+        className="explanation-button"
       >
         {isExplanationVisible ? "Hide Explanation" : "Show Explanation"}
       </button>
       {/* add style to CSS file later */}
       <div
-        className="explanation-container"
+        className="explanation-text-container"
         style={{
-          width: "100%",
-          marginTop: "1rem",
           display: isExplanationVisible ? "block" : "none",
         }}
       >
