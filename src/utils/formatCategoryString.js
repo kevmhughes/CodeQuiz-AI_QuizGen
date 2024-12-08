@@ -1,5 +1,5 @@
 export const categoryString = (topic) => {
-  if (topic === "" || undefined) {
+  if (topic === "" || topic === undefined) {
     return (topic = "Random");
   } else if (topic === "angular") {
     return (topic = "Angular");
@@ -23,6 +23,8 @@ export const categoryString = (topic) => {
     return (topic = "MongoDB");
   } else if (topic === "python") {
     return (topic = "Python");
+  } else if (topic === "node") {
+    return (topic = "Node");
   } else if (topic === "react") {
     return (topic = "React");
   } else if (topic === "testing") {
