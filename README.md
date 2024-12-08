@@ -1,4 +1,4 @@
-# CodeQuiz Quiz App (WIP)
+# CodeQuiz App (WIP)
 
 Welcome to **CodeQuiz** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **CodeQuiz** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz drawn from a variety of questions stored in a **MongoDB** database. 
 
