@@ -1,4 +1,4 @@
-# BrainCode Quiz App
+# BrainCode Quiz App (WIP)
 
 Welcome to **BrainCode** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **BrainCode** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz drawn from a variety of questions stored in a **MongoDB** database. 
 
