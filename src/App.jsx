@@ -59,19 +59,19 @@ function App() {
           setQuestions(response.data.results); // Update questions state
         }
 
-        /* if (randomDb) {
+        if (randomDb) {
         // RANDOMLY GENERATED QUESTION
         const response = await axios.get(
           `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
         );
         
         setQuestions(response.data.results); 
-        } */
+        }
 
-        if (randomDb) {
+        /* if (randomDb) {
           // BACK UP QUESTIONS
           setQuestions(backUpArray[0].results);
-        }
+        } */
 
         setError(null); // Reset error if the request was successful
       } catch (error) {
@@ -121,7 +121,7 @@ function App() {
     return (
       <div className="loader-container">
         <Image
-          alt="CodeBrain app logo rotating during loading"
+          alt="CodeQuiz app logo rotating during loading"
           className="rotating-image"
           src={logo}
         />
@@ -181,7 +181,7 @@ function App() {
         <Image
           src={logo}
           className="header-logo"
-          alt="Logo of the CodeBrain app in the header"
+          alt="Logo of the CodeQuiz app in the header"
           handleReturnToStart={handleReturnToStart}
         />
       </header>
@@ -204,7 +204,7 @@ function App() {
             />
           ) : (
             <>
-              <h1 className="codebrain-title-text">&lt;CodeBrain&gt;</h1>
+              <h1 className="codequiz-title-text">&lt;CodeQuiz&gt;</h1>
               <ChoicesView
                 handleShowForm={handleShowForm}
                 showForm={showForm}
