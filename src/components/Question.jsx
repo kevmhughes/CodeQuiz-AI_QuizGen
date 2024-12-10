@@ -2,6 +2,10 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import xml from 'react-syntax-highlighter/dist/cjs/languages/hljs/xml';
+import javascript from 'react-syntax-highlighter/dist/cjs/languages/hljs/javascript';
+SyntaxHighlighter.registerLanguage('xml', xml);
+SyntaxHighlighter.registerLanguage('javascript', javascript);
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Question = ({ questions, index, AiDb, randomDb, docco }) => {
