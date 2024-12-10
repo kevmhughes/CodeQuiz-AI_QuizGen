@@ -13,6 +13,7 @@ body {
 
 .main-logo {
   margin-top: 3rem;
+  max-width: 20rem;
 }
 
 .choose-your-quiz-text {
@@ -56,10 +57,10 @@ body {
 
 pre {
   margin: 0;
-  white-space: pre-wrap;         /* Allows wrapping of long lines */
-  word-wrap: break-word;         /* Breaks the long word and wraps it */
-  overflow-wrap: break-word;     /* Same as word-wrap, but more modern */
-  word-break: break-word;        /* Ensures long words break when necessary */  
+  white-space: pre-wrap; /* Allows wrapping of long lines */
+  word-wrap: break-word; /* Breaks the long word and wraps it */
+  overflow-wrap: break-word; /* Same as word-wrap, but more modern */
+  word-break: break-word; /* Ensures long words break when necessary */
 }
 
 /* stops the overflow of the text in the code examples
@@ -67,7 +68,7 @@ pre {
 code {
   text-wrap: auto;
   display: inline-block;
-  word-wrap: break-word;         /* Allows wrapping of long words inside inline code */
+  word-wrap: break-word; /* Allows wrapping of long words inside inline code */
 }
 
 /* stops the overflow of the text in the code examples
@@ -81,13 +82,13 @@ code .language-javacript {
 }
 
 .example-number-text {
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
 .start-page-buttons-container {
   display: flex;
   gap: 16px;
-  width: 300px;
+  width: 15rem;
   height: 150px;
   margin-top: 2rem;
 }
@@ -170,11 +171,11 @@ code .language-javacript {
 }
 
 .explanation-text-container {
-  font-size: .875em;
+  font-size: 0.875em;
   width: 100%;
   display: block;
   margin-bottom: 1rem;
-  background-color: #F8F8FE;
+  background-color: #f8f8fe;
   padding: 1rem;
   border-radius: 5px;
 }
@@ -253,6 +254,18 @@ img.jump-in-distance {
 /* media queries */
 
 @media only screen and (max-width: 480px) {
+  .codequiz-title-text {
+    font-size: 2.5rem;
+  }
+
+  .main-logo {
+    max-width: 15rem;
+  }
+
+  .start-page-buttons-container {
+    width: 11rem;
+  }
+
   .react-markdown-wrapper {
     font-size: 10px;
   }
