@@ -20,7 +20,6 @@ const QuizView = ({
   handleSeeScore,
   AiDb,
   randomDb,
-  docco
 }) => {
   return (
     <div className="quiz-container">
@@ -35,7 +34,7 @@ const QuizView = ({
           <b>Question:</b> {questionIndex + 1}/{questionsToDisplay.length}
         </div>
         <div>
-          <b>Category:</b> {categoryString(formData.topic)}
+          <b>Category:</b> {AiDb && categoryString(formData.topic)} {randomDb && categoryString(questionsToDisplay[index].categories[0])}
         </div>
       </div>
       <Question
@@ -43,7 +42,6 @@ const QuizView = ({
         index={index}
         AiDb={AiDb}
         randomDb={randomDb}
-        docco={docco} 
       />
       <Answers
         questions={questionsToDisplay}
