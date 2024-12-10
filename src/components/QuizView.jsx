@@ -23,18 +23,13 @@ const QuizView = ({
 }) => {
   return (
     <div className="quiz-container">
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="quiz-container-title">
         <div>
           <b>Question:</b> {questionIndex + 1}/{questionsToDisplay.length}
         </div>
         <div>
-          <b>Category:</b> {AiDb && categoryString(formData.topic)} {randomDb && categoryString(questionsToDisplay[index].categories[0])}
+          <b>Category:</b> {AiDb && categoryString(formData.topic)}{" "}
+          {randomDb && categoryString(questionsToDisplay[index].categories[0])}
         </div>
       </div>
       <Question

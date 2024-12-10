@@ -2,6 +2,10 @@ body {
   height: 100vh;
 }
 
+html {
+  font-size: 16px;
+}
+
 .header-logo {
   margin: 16px;
   height: 30px;
@@ -13,7 +17,6 @@ body {
 
 .main-logo {
   margin-top: 3rem;
-  max-width: 20rem;
 }
 
 .choose-your-quiz-text {
@@ -81,6 +84,7 @@ code .language-javacript {
   text-wrap: auto;
 }
 
+
 .example-number-text {
   font-size: 0.6rem;
 }
@@ -99,6 +103,14 @@ code .language-javacript {
   align-items: center;
   margin-bottom: 1rem;
 }
+
+.quiz-container-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 
 .choices-container {
   display: flex;
@@ -264,6 +276,14 @@ img.jump-in-distance {
 
   .start-page-buttons-container {
     width: 11rem;
+  }
+
+  .choices-view-button-left-span {
+    left: 0;
+  }
+
+  .choices-view-button-right-span {
+    right: 0;
   }
 
   .react-markdown-wrapper {
