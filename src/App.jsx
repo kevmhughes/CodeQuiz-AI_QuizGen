@@ -13,6 +13,7 @@ import "./assets/styles/styles.css";
 import logo from "/images/logo/logo.svg";
 import backUpArray from "../src/utils/backUpArray";
 import Image from "./components/Image";
+import Loader from "./components/Loader";
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -121,13 +122,7 @@ function App() {
 
   if (loading) {
     return (
-      <div className="loader-container">
-        <Image
-          alt="CodeQuiz app logo rotating during loading"
-          className="rotating-image"
-          src={logo}
-        />
-      </div>
+      <Loader />
     );
   }
 
