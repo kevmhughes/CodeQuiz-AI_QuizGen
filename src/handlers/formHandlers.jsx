@@ -10,7 +10,7 @@ export const handleSubmit = (
   e.preventDefault();
   setFormData(values);
   setValues({
-    amount: 1,
+    amount: 10,
     topic: "",
   });
   hasFetched.current = false;
@@ -58,7 +58,7 @@ export const handleShowAIQuiz = (
   setShowQuizPage(true);
   setFormData(values);
   setValues({
-    amount: 1,
+    amount: 10,
     topic: "",
   });
   hasFetched.current = false;
