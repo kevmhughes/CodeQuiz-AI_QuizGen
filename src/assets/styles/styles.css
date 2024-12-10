@@ -147,10 +147,13 @@ pre {
 }
 
 .explanation-text-container {
-  font-size: 0.9rem;
+  font-size: .875em;
   width: 100%;
   display: block;
   margin-bottom: 1rem;
+  background-color: #F8F8FE;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .see-score-button {
