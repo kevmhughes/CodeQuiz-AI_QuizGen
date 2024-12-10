@@ -18,6 +18,8 @@ const QuizView = ({
   index,
   setScore,
   handleSeeScore,
+  AiDb,
+  randomDb,
 }) => {
   return (
     <div className="quiz-container">
@@ -35,7 +37,12 @@ const QuizView = ({
           <b>Category:</b> {categoryString(formData.topic)}
         </div>
       </div>
-      <Question questions={questionsToDisplay} index={index} />
+      <Question
+        questions={questionsToDisplay}
+        index={index}
+        AiDb={AiDb}
+        randomDb={randomDb}
+      />
       <Answers
         questions={questionsToDisplay}
         handleNextQuestion={nextQuestion}

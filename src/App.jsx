@@ -60,12 +60,12 @@ function App() {
         }
 
         if (randomDb) {
-        // RANDOMLY GENERATED QUESTION
-        const response = await axios.get(
-          `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
-        );
-        
-        setQuestions(response.data.results); 
+          // RANDOMLY GENERATED QUESTION
+          const response = await axios.get(
+            `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
+          );
+
+          setQuestions(response.data.results);
         }
 
         /* if (randomDb) {
@@ -87,6 +87,8 @@ function App() {
 
   const questionsToDisplay =
     questions.length > 0 ? questions : backUpArray[0].results;
+
+  console.log(questionsToDisplay[index].answerOptions);
 
   // handlers
   const nextQuestion = () => {
@@ -175,6 +177,12 @@ function App() {
     setSelectedAnswer(null);
   };
 
+  console.log("questions", questionsToDisplay);
+  console.log("formData", formData);
+  console.log("values", values);
+  console.log("Aidb", AiDb);
+  console.log("RandomCB", randomDb);
+
   return (
     <>
       <header>
@@ -201,6 +209,8 @@ function App() {
               index={index}
               setScore={setScore}
               handleSeeScore={handleSeeScore}
+              AiDb={AiDb}
+              randomDb={randomDb}
             />
           ) : (
             <>
