@@ -48,6 +48,12 @@ body {
   width: 100%;
 }
 
+/* stops the overflow of the text in the code examples
+ */
+.xml {
+  text-wrap: auto;
+}
+
 pre {
   margin: 0;
 }
@@ -216,4 +222,18 @@ img.jump-in-distance {
   animation: jumpInFromDistance 1s ease-out forwards;
   margin-top: 3rem;
   margin-bottom: 4rem;
+}
+
+/* media queries */
+
+@media only screen and (max-width: 480px) {
+  .react-markdown-wrapper {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .react-markdown-wrapper {
+    font-size: 9px;
+  }
 }
