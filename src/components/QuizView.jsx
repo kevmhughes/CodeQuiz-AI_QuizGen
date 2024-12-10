@@ -20,6 +20,7 @@ const QuizView = ({
   handleSeeScore,
   AiDb,
   randomDb,
+  docco
 }) => {
   return (
     <div className="quiz-container">
@@ -42,6 +43,7 @@ const QuizView = ({
         index={index}
         AiDb={AiDb}
         randomDb={randomDb}
+        docco={docco} 
       />
       <Answers
         questions={questionsToDisplay}

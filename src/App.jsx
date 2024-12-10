@@ -6,6 +6,9 @@ import {
   handleNextQuestion,
   handleShowAIQuiz,
 } from "./handlers/formHandlers";
+/* testing docco in App.js to see if it is applied correctly in production */
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+/* testing docco in App.js to see if it is applied correctly in production */
 import ScoreView from "./components/ScoreView";
 import ChoicesView from "./components/ChoicesView";
 import QuizView from "./components/QuizView";
@@ -211,6 +214,7 @@ function App() {
               handleSeeScore={handleSeeScore}
               AiDb={AiDb}
               randomDb={randomDb}
+              docco={docco} 
             />
           ) : (
             <>

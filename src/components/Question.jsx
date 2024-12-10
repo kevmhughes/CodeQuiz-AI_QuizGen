@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const Question = ({ questions, index, AiDb, randomDb }) => {
+const Question = ({ questions, index, AiDb, randomDb, docco }) => {
   const questionData = questions[index];
   const codeSnippets = questionData.codeExamples;
   const markdownContent = questions[index].codeExamples;
