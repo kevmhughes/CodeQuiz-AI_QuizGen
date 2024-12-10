@@ -19,7 +19,7 @@ const Question = ({ questions, index, AiDb, randomDb }) => {
       {randomDb && codeSnippets && codeSnippets.length > 0 && (
         <div className="react-markdown-wrapper">
           {codeSnippets.map((snippet, idx) => (
-            <div key={idx} className="code-example-container">
+            <div key={idx}>
               <SyntaxHighlighter language="javascript" style={docco}>
                 {snippet}
               </SyntaxHighlighter>

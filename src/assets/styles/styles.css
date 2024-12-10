@@ -40,6 +40,20 @@ body {
 
 .question-container {
   margin-top: 1rem;
+  width: 100%;
+}
+
+.react-markdown-wrapper {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+pre {
+  margin: 0;
+}
+
+.example-number-text {
+  font-size: .6rem;
 }
 
 .start-page-buttons-container {
@@ -115,7 +129,7 @@ body {
 
 .explanation-button-text-container {
   margin-top: 1rem;
-  width: 100%; 
+  width: 100%;
 }
 
 .explanation-button {
