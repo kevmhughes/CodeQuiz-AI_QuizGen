@@ -1,42 +1,59 @@
 export const categoryString = (topic) => {
-  if (topic === "" || topic === undefined) {
-    return (topic = "Random");
-  } else if (topic === "angular") {
-    return (topic = "Angular");
-  } else if (topic === "cloudcomputing") {
-    return (topic = "Cloud Computing");
-  } else if (topic === "css") {
-    return (topic = "CSS");
-  } else if (topic === "datasecurity") {
-    return (topic = "Data Security");
-  } else if (topic === "dom") {
-    return (topic = "DOM");
-  } else if (topic === "express") {
-    return (topic = "Express");
-  } else if (topic === "html") {
-    return (topic = "HTML");
-  }else if (topic === "git") {
-    return (topic = "Git");
-  } else if (topic === "javascript-advanced") {
-    return (topic = "JavaScript - Advanced");
-  } else if (topic === "javascript-basics") {
-    return (topic = "JavaScript - Basics");
-  } else if (topic === "mongodb") {
-    return (topic = "MongoDB");
-  } else if (topic === "python") {
-    return (topic = "Python");
-  } else if (topic === "node") {
-    return (topic = "Node");
-  } else if (topic === "react") {
-    return (topic = "React");
-  } else if (topic === "testing") {
-    return (topic = "Testing");
-  } else if (topic === "sql") {
-    return (topic = "SQL");
-  } else if (topic === "typescript") {
-    return (topic = "TypeScript");
-  } else if (topic === "vue") {
-    return (topic = "Vue");
+  switch (topic) {
+    case "":
+    case undefined:
+      return "Random";
+    case "angular":
+      return "Angular";
+    case "cloudcomputing":
+      return "Cloud Computing";
+    case "css":
+      return "CSS";
+    case "datasecurity":
+      return "Data Security";
+    case "dom":
+      return "DOM";
+    case "express":
+      return "Express";
+    case "html":
+      return "HTML";
+    case "git":
+      return "Git";
+    case "javascript":
+      return "JavaScript";
+    case "javascript-advanced":
+      return "JavaScript - Advanced";
+    case "javascript-basics":
+      return "JavaScript - Basics";
+    case "mongodb":
+      return "MongoDB";
+    case "mysql":
+      return "MySQL";
+    case "other":
+      return "Other";
+    case "php":
+      return "PHP";
+    case "python":
+      return "Python";
+    case "node":
+    case "node-js":
+    case "nodejs":
+      return "Node";
+    case "react":
+    case "reactjs":
+      return "React";
+    case "rest-api":
+      return "REST API";
+    case "testing":
+      return "Testing";
+    case "sql":
+      return "SQL";
+    case "typescript":
+      return "TypeScript";
+    case "vue":
+      return "Vue";
+    default:
+      return "Random";
   }
 };
 
