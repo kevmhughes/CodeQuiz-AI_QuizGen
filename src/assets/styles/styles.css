@@ -56,6 +56,28 @@ body {
 
 pre {
   margin: 0;
+  white-space: pre-wrap;         /* Allows wrapping of long lines */
+  word-wrap: break-word;         /* Breaks the long word and wraps it */
+  overflow-wrap: break-word;     /* Same as word-wrap, but more modern */
+  word-break: break-word;        /* Ensures long words break when necessary */  
+}
+
+/* stops the overflow of the text in the code examples
+ */
+code {
+  text-wrap: auto;
+  display: inline-block;
+  word-wrap: break-word;         /* Allows wrapping of long words inside inline code */
+}
+
+/* stops the overflow of the text in the code examples
+ */
+span {
+  text-wrap: auto;
+}
+
+code .language-javacript {
+  text-wrap: auto;
 }
 
 .example-number-text {
@@ -74,6 +96,7 @@ pre {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .choices-container {
@@ -142,7 +165,7 @@ pre {
   width: 100%;
   padding: 12px;
   background-color: white;
-  color: #373c44;
+  color: #000000a3;
   margin-bottom: 1rem;
 }
 
