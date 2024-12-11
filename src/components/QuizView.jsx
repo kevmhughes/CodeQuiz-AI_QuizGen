@@ -47,6 +47,9 @@ const QuizView = ({
         selectedAnswer={selectedAnswer}
         index={index}
         setScore={setScore}
+        AiDb={AiDb}
+        randomDb={randomDb}
+        formData={formData}
       />
       {index + 1 === questions.length && showExplanationButton && (
         <button onClick={handleSeeScore} className="see-score-button">

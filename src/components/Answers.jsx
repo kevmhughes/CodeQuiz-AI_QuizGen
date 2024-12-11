@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { fisherYatesShuffle } from "../utils/fisherYatesShuffle";
+import categoryString from "../utils/formatCategoryString";
 
 const Answers = ({
   questions,
@@ -12,13 +13,58 @@ const Answers = ({
   setSelectedAnswer,
   selectedAnswer,
   setScore,
+  AiDb,
+  randomDb,
+  formData
+  // testing below
 }) => {
   // Function to handle when an answer is selected
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer); // Store the selected answer
     setShowExplanationButton(true); // Show the explanation button
+    // Convert category into a string (check if it's valid)
+
+    let formattedCategory;
+
+    if (AiDb) {
+      formattedCategory = categoryString(formData.topic);
+    } else if (randomDb) {
+      formattedCategory = categoryString(questions[index].categories[0]);
+    }
+
+    // If the answer is correct, update the score and count for the category
     if (answer.isCorrect) {
-      setScore((prev) => prev + 1);
+      setScore((prevScore) => {
+        // Get the current stats for the category or initialize them if undefined
+        const currentCategoryStats = prevScore[formattedCategory] || {
+          score: 0,
+          count: 0,
+        };
+
+        return {
+          ...prevScore, // Spread the previous state to maintain other categories
+          [formattedCategory]: {
+            score: currentCategoryStats.score + 1, // Increment score by 1
+            count: currentCategoryStats.count + 1, // Increment count by 1
+          },
+        };
+      });
+    } else {
+      // Increment count only if the answer is incorrect or to track question attempts
+      setScore((prevScore) => {
+        const currentCategoryStats = prevScore[formattedCategory] || {
+          score: 0,
+          count: 0,
+        };
+
+        return {
+          ...prevScore,
+          [formattedCategory]: {
+            ...currentCategoryStats,
+            count: currentCategoryStats.count + 1, // Increment count (whether correct or not)
+          },
+        };
+      });
     }
   };
 

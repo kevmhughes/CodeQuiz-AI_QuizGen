@@ -12,7 +12,7 @@ import QuizView from "./components/QuizView";
 import "./assets/styles/styles.css";
 import logo from "/images/logo/logo.svg";
 import backUpArray from "../src/utils/backUpArray";
-import Image from "./components/Image";
+import Header from "./components/Header";
 import Loader from "./components/Loader";
 
 function App() {
@@ -34,11 +34,68 @@ function App() {
   const [AiDb, setAiDb] = useState(false);
   const [randomDb, setRandomDb] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState({
+    Angular: { score: 0, count: 0 },
+    "Cloud Computing": { score: 0, count: 0 },
+    CSS: { score: 0, count: 0 },
+    "Data Security": { score: 0, count: 0 },
+    DOM: { score: 0, count: 0 },
+    Express: { score: 0, count: 0 },
+    HTML: { score: 0, count: 0 },
+    Git: { score: 0, count: 0 },
+    JavaScript: { score: 0, count: 0 },
+    MongoDB: { score: 0, count: 0 },
+    MySQL: { score: 0, count: 0 },
+    Other: { score: 0, count: 0 },
+    PHP: { score: 0, count: 0 },
+    Python: { score: 0, count: 0 },
+    Node: { score: 0, count: 0 },
+    React: { score: 0, count: 0 },
+    "REST API": { score: 0, count: 0 },
+    Testing: { score: 0, count: 0 },
+    SQL: { score: 0, count: 0 },
+    TypeScript: { score: 0, count: 0 },
+    Vue: { score: 0, count: 0 },
+    Random: { score: 0, count: 0 },
+  });
+  const [accumulativeScore, setAccumulativeScore] = useState({
+    Angular: { score: 0, count: 0 },
+    "Cloud Computing": { score: 0, count: 0 },
+    CSS: { score: 0, count: 0 },
+    "Data Security": { score: 0, count: 0 },
+    DOM: { score: 0, count: 0 },
+    Express: { score: 0, count: 0 },
+    HTML: { score: 0, count: 0 },
+    Git: { score: 0, count: 0 },
+    JavaScript: { score: 0, count: 0 },
+    MongoDB: { score: 0, count: 0 },
+    MySQL: { score: 0, count: 0 },
+    Other: { score: 0, count: 0 },
+    PHP: { score: 0, count: 0 },
+    Python: { score: 0, count: 0 },
+    Node: { score: 0, count: 0 },
+    React: { score: 0, count: 0 },
+    "REST API": { score: 0, count: 0 },
+    Testing: { score: 0, count: 0 },
+    SQL: { score: 0, count: 0 },
+    TypeScript: { score: 0, count: 0 },
+    Vue: { score: 0, count: 0 },
+    Random: { score: 0, count: 0 },
+  });
+
   const [showScore, setShowScore] = useState(false);
 
   const questionIndex = index;
   const hasFetched = useRef(false); // UseRef to track fetch status
+
+  useEffect(() => {
+    // On mount, retrieve the accumulativeScore from localStorage
+    const savedScores = localStorage.getItem("accumulativeScore");
+    if (savedScores) {
+      console.log("saved scores", JSON.parse(savedScores));
+      setAccumulativeScore(JSON.parse(savedScores)); // Set state with retrieved score
+    }
+  }, []); // This only runs once when the component mounts
 
   // useEffect to fetch questions only once after the first render
   useEffect(() => {
@@ -48,7 +105,8 @@ function App() {
     hasFetched.current = true;
 
     const fetchQuestions = async () => {
-      /* setLoading(true) */ // Ensure loading is set to true before the request
+      /* localStorage.clear(); */
+      setLoading(true);
 
       try {
         if (AiDb) {
@@ -84,12 +142,10 @@ function App() {
     };
 
     fetchQuestions();
-  }, [formData, AiDb, randomDb, showQuizPage]);
+  }, [formData, AiDb, randomDb, showQuizPage, accumulativeScore]);
 
   const questionsToDisplay =
     questions.length > 0 ? questions : backUpArray[0].results;
-
-  console.log(questionsToDisplay[index].answerOptions);
 
   // handlers
   const nextQuestion = () => {
@@ -122,7 +178,9 @@ function App() {
 
   if (loading) {
     return (
-      <Loader />
+      <>
+        <Loader />
+      </>
     );
   }
 
@@ -164,31 +222,54 @@ function App() {
     setShowExplanationButton(false);
     setSelectedAnswer(null);
     setQuestions([]);
+    localStorage.setItem(
+      "accumulativeScore",
+      JSON.stringify(accumulativeScore)
+    );
+  };
+
+  const handleCombineScores = () => {
+    // Get the previous scores from localStorage
+    const savedPreviousScoresObject = localStorage.getItem("accumulativeScore");
+    const parsedScoresObject = savedPreviousScoresObject
+      ? JSON.parse(savedPreviousScoresObject)
+      : accumulativeScore; // Use existing accumulativeScore if no saved data
+
+    // Combine the score and count for each category
+    const combinedScores = Object.keys(score).reduce((acc, key) => {
+      // Safely add previous score and current score
+      acc[key] = {
+        score: (score[key]?.score || 0) + (parsedScoresObject[key]?.score || 0),
+        count: (score[key]?.count || 0) + (parsedScoresObject[key]?.count || 0),
+      };
+      return acc;
+    }, {});
+
+    // Update the accumulativeScore state with the combined scores
+    setAccumulativeScore((prevScore) => ({
+      ...prevScore, // Keep previous score values
+      ...combinedScores, // Add the newly combined scores
+    }));
+
+    // Optionally, save the combined scores to localStorage
+    /*     localStorage.setItem("accumulativeScore", JSON.stringify(combinedScores)); */
+
+    // Log the combined scores for debugging
+    console.log("combinedScores", combinedScores);
   };
 
   const handleSeeScore = () => {
     setShowScore(true);
     setShowExplanationButton(false);
     setSelectedAnswer(null);
-  };
 
-  console.log("questions", questionsToDisplay);
-  console.log("formData", formData);
-  console.log("values", values);
-  console.log("Aidb", AiDb);
-  console.log("RandomCB", randomDb);
-  console.log("randmDb category", questionsToDisplay[index].categories)
+    // Combine scores and update state
+    handleCombineScores();
+  };
 
   return (
     <>
-      <header>
-        <Image
-          src={logo}
-          className="header-logo"
-          alt="Logo of the CodeQuiz app in the header"
-          handleReturnToStart={handleReturnToStart}
-        />
-      </header>
+      <Header logo={logo} handleReturnToStart={handleReturnToStart} />
       <div className="main-container">
         {!showScore ? (
           showQuizPage ? (
@@ -224,7 +305,11 @@ function App() {
             </>
           )
         ) : (
-          <ScoreView score={score} handleReturnToStart={handleReturnToStart} />
+          <ScoreView
+            score={score}
+            accumulativeScore={accumulativeScore}
+            handleReturnToStart={handleReturnToStart}
+          />
         )}
       </div>
     </>
