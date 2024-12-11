@@ -1,8 +1,8 @@
+// topics used in the input fields of the form that generates AI questions
 export const topics = [
   "Angular",
   "Cloud Computing",
   "CSS",
-  "Data Security",
   "DOM",
   "Express",
   "Git",

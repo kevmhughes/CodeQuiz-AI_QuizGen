@@ -89,7 +89,6 @@ When you launch the app, you'll have the option to choose from the following qui
 - **Angular**
 - **Cloud Computing**
 - **CSS**
-- **Data Security**
 - **DOM**
 - **Express**
 - **HTML**

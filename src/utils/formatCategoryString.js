@@ -9,8 +9,6 @@ export const categoryString = (topic) => {
       return "Cloud Computing";
     case "css":
       return "CSS";
-    case "datasecurity":
-      return "Data Security";
     case "dom":
       return "DOM";
     case "express":
