@@ -7,11 +7,11 @@ import loser from "/images/images/loser.svg";
 import winner from "/images/images/winner.svg";
 import Confetti from "react-confetti";
 
-const ScoreView = ({ score, handleReturnToStart }) => {
+const ScoreView = ({ score, accumulativeScore, handleReturnToStart }) => {
   const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
-    if (score >= 5) {
+    if (totalScore >= 5) {
       setConfetti(true);
       const timer = setTimeout(() => {
         setConfetti(false);
@@ -22,13 +22,23 @@ const ScoreView = ({ score, handleReturnToStart }) => {
     }
   }, []);
 
+  // Sum up the total score of all the score values of the present quiz
+  const totalScore = Object.values(score).reduce((acc, curr) => {
+    return acc + curr.score;
+  }, 0);
+
+  // Convert the accumulative score object to an array of key-value pairs
+  const ObjArray = Object.entries(accumulativeScore);
+  // Filter the entries where the count value is greater than 0
+  const filteredResults = ObjArray.filter(([key, value]) => value.count > 0);
+
   return (
     <div className="scoreview-container">
-      {/* Confetti effect */}
       {confetti && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
-      {score === 10 && (
+
+      {totalScore === 10 && (
         <>
           <Image
             src={winner}
@@ -36,21 +46,21 @@ const ScoreView = ({ score, handleReturnToStart }) => {
             className="jump-in-distance"
           />
           <div>WOW, you got a perfect score!</div>
-          <div>Your final score is {score} out of 10</div>
+          <div>Your final score is {totalScore} out of 10.</div>
         </>
       )}
-      {score >= 5 && score < 10 && (
+      {totalScore >= 5 && totalScore < 10 && (
         <>
           <Image
             src={trophy}
             alt="Trophy image for the scoreboard"
             className="jump-in-distance"
           />
-          <div>Well done! Your final score is {score} out of 10</div>
+          <div>Well done! Your final score is {totalScore} out of 10.</div>
         </>
       )}
 
-      {score < 5 && score > 0 && (
+      {totalScore < 5 && totalScore > 0 && (
         <>
           <Image
             src={donut}
@@ -58,11 +68,11 @@ const ScoreView = ({ score, handleReturnToStart }) => {
             className="jump-in-distance"
           />
           <div>You will do better next time!</div>
-          <div>Your final score is {score} out of 10</div>
+          <div>Your final score is {totalScore} out of 10.</div>
         </>
       )}
 
-      {score === 0 && (
+      {totalScore === 0 && (
         <>
           <Image
             src={loser}
@@ -70,9 +80,19 @@ const ScoreView = ({ score, handleReturnToStart }) => {
             className="jump-in-distance"
           />
           <div>Err, better luck next time!</div>
-          <div>Your final score is {score} out of 10</div>
+          <div>Your final score is {totalScore} out of 10.</div>
         </>
       )}
+
+      <div className="breakdown-container">
+        <div style={{ marginTop: "1rem", fontWeight: "bold" }}>Breakdown:</div>
+        {filteredResults.map((results) => (
+          <div key={results[0]}>
+            {results[0]}: {results[1].score}/{results[1].count}
+          </div>
+        ))}
+      </div>
+
       <button onClick={handleReturnToStart} className="play-again-button">
         Play again
       </button>
