@@ -6,15 +6,6 @@ import GeneratorButton from "./GeneratorButton";
 const Form = ({ handleChange, handleSubmit, values, handleShowAIQuiz }) => {
   return (
     <form onSubmit={handleSubmit}>
-      {/*       <input
-        type="number"
-        name="amount"
-        onChange={handleChange}
-        placeholder="amount"
-        value={values.amount}
-        min={1}
-        max={10}
-      /> */}
       <select
         name="topic"
         onChange={handleChange}
