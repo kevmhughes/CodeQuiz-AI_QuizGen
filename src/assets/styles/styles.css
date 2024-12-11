@@ -263,6 +263,17 @@ img.jump-in-distance {
   margin-bottom: 4rem;
 }
 
+/* Confetti fade-out */
+
+.fade-out {
+  opacity: 0 !important; /* Set opacity to 0 when fade-out class is applied */
+  transition: opacity 3s ease-out; /* Gradually fade out over 3 seconds */
+}
+
+.react-confetti {
+  transition: opacity 3s ease-out; /* Add transition for smooth opacity change */
+}
+
 /* media queries */
 
 @media only screen and (max-width: 480px) {
