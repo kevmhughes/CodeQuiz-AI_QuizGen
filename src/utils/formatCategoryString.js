@@ -20,11 +20,9 @@ export const categoryString = (topic) => {
     case "git":
       return "Git";
     case "javascript":
-      return "JavaScript";
     case "javascript-advanced":
-      return "JavaScript - Advanced";
     case "javascript-basics":
-      return "JavaScript - Basics";
+      return "JavaScript";
     case "mongodb":
       return "MongoDB";
     case "mysql":
