@@ -90,7 +90,6 @@ function App() {
     // On mount, retrieve the accumulativeScore from localStorage
     const savedScores = localStorage.getItem("accumulativeScore");
     if (savedScores) {
-      console.log("saved scores", JSON.parse(savedScores));
       setAccumulativeScore(JSON.parse(savedScores)); // Set state with retrieved score
     }
   }, []); // This only runs once when the component mounts
@@ -213,6 +212,7 @@ function App() {
   const handleReturnToStart = () => {
     setShowForm(false);
     setShowScore(false);
+    setShowStats(false);
     setIndex(0);
     setShowQuizPage(false);
     setScore(0);
