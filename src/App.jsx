@@ -119,14 +119,8 @@ function App() {
           const response = await axios.get(
             `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
           );
-
           setQuestions(response.data.results);
         }
-
-        /* if (randomDb) {
-          // BACK UP QUESTIONS
-          setQuestions(backUpArray[0].results);
-        } */
 
         setError(null); // Reset error if the request was successful
       } catch (error) {
@@ -207,12 +201,16 @@ function App() {
 
   const handleShowForm = () => {
     setShowForm(true);
+    setRandomDb(false)
+    setAiDb(true);
   };
 
   const handleReturnToStart = () => {
     setShowForm(false);
     setShowScore(false);
     setShowStats(false);
+    setRandomDb(false)
+    setAiDb(false);
     setIndex(0);
     setShowQuizPage(false);
     setScore(0);
