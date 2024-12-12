@@ -105,11 +105,12 @@ const ScoreView = ({
           <div className="stats-inner-container">
             {filteredResults &&
               filteredResults.map((results) => (
-                <div className="stat-container">
+                <div className="stat-container" key={`${results[0]}-stat-container`}>
                   <div key={results[0]}>
                     <b>{results[0]}:</b> {results[1].score}/{results[1].count}
                   </div>
                   <div
+                    key={`${results[0]}-piechart`}
                     className="pie"
                     style={{
                       width: "80px",
