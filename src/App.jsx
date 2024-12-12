@@ -80,8 +80,8 @@ function App() {
     Vue: { score: 0, count: 0 },
     Random: { score: 0, count: 0 },
   });
-
   const [showScore, setShowScore] = useState(false);
+  const [showStats, setShowStats] = useState(false);
 
   const questionIndex = index;
   const hasFetched = useRef(false); // UseRef to track fetch status
@@ -103,7 +103,6 @@ function App() {
     hasFetched.current = true;
 
     const fetchQuestions = async () => {
-      /* localStorage.clear(); */
       setLoading(true);
 
       try {
@@ -249,8 +248,6 @@ function App() {
       ...combinedScores, // Add the newly combined scores
     }));
 
-    // Optionally, save the combined scores to localStorage
-    /*     localStorage.setItem("accumulativeScore", JSON.stringify(combinedScores)); */
 
     // Log the combined scores for debugging
     console.log("combinedScores", combinedScores);
@@ -264,6 +261,8 @@ function App() {
     // Combine scores and update state
     handleCombineScores();
   };
+
+  console.log("accumulativeScore", accumulativeScore)
 
   return (
     <>
@@ -307,6 +306,10 @@ function App() {
             score={score}
             accumulativeScore={accumulativeScore}
             handleReturnToStart={handleReturnToStart}
+            showStats={showStats}
+            setShowStats={setShowStats}
+            setShowScore={setShowScore}
+            setAccumulativeScore={setAccumulativeScore}
           />
         )}
       </div>

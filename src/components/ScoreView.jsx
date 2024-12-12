@@ -7,7 +7,15 @@ import loser from "/images/images/loser.svg";
 import winner from "/images/images/winner.svg";
 import Confetti from "react-confetti";
 
-const ScoreView = ({ score, accumulativeScore, handleReturnToStart }) => {
+const ScoreView = ({
+  score,
+  accumulativeScore,
+  setAccumulativeScore,
+  handleReturnToStart,
+  showStats,
+  setShowScore,
+  setShowStats,
+}) => {
   const [confetti, setConfetti] = useState(false);
   const [fadeOutClass, setFadeOutClass] = useState("");
 
@@ -46,77 +54,136 @@ const ScoreView = ({ score, accumulativeScore, handleReturnToStart }) => {
   // Filter the entries where the count value is greater than 0
   const filteredResults = ObjArray.filter(([key, value]) => value.count > 0);
 
+  const handleSeeYourStats = () => {
+    setShowStats(true);
+    localStorage.setItem(
+      "accumulativeScore",
+      JSON.stringify(accumulativeScore)
+    );
+  };
+
+  const handleResetYourStats = () => {
+    setAccumulativeScore({
+      Angular: { score: 0, count: 0 },
+      "Cloud Computing": { score: 0, count: 0 },
+      CSS: { score: 0, count: 0 },
+      DOM: { score: 0, count: 0 },
+      Express: { score: 0, count: 0 },
+      HTML: { score: 0, count: 0 },
+      Git: { score: 0, count: 0 },
+      JavaScript: { score: 0, count: 0 },
+      MongoDB: { score: 0, count: 0 },
+      MySQL: { score: 0, count: 0 },
+      Other: { score: 0, count: 0 },
+      PHP: { score: 0, count: 0 },
+      Python: { score: 0, count: 0 },
+      Node: { score: 0, count: 0 },
+      React: { score: 0, count: 0 },
+      "REST API": { score: 0, count: 0 },
+      Testing: { score: 0, count: 0 },
+      SQL: { score: 0, count: 0 },
+      TypeScript: { score: 0, count: 0 },
+      Vue: { score: 0, count: 0 },
+      Random: { score: 0, count: 0 },
+    });
+    setShowScore(false);
+    setShowStats(false);
+    handleReturnToStart();
+    localStorage.clear();
+  };
+
   return (
-    <div className="scoreview-container">
-      {confetti && (
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          className={fadeOutClass}
-        />
-      )}
+    <>
+      {showStats ? (
+        <div className="stats-container">
+          {!filteredResults && (
+            <div style={{ marginTop: "1rem", fontWeight: "bold" }}>
+              Breakdown:
+            </div>
+          )}
+          {filteredResults &&
+            filteredResults.map((results) => (
+              <div key={results[0]}>
+                {results[0]}: {results[1].score}/{results[1].count}
+              </div>
+            ))}
+          <button onClick={handleResetYourStats}>
+            reset your statistics here
+          </button>
+        </div>
+      ) : (
+        <div className="scoreview-container">
+          {confetti && (
+            <Confetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              className={fadeOutClass}
+            />
+          )}
 
-      {totalScore === 10 && (
-        <>
-          <Image
-            src={winner}
-            alt="Winner image for the scoreboard"
-            className="jump-in-distance"
-          />
-          <div>WOW, you got a perfect score!</div>
-          <div>Your score is {totalScore} out of 10.</div>
-        </>
-      )}
-      {totalScore >= 5 && totalScore < 10 && (
-        <>
-          <Image
-            src={trophy}
-            alt="Trophy image for the scoreboard"
-            className="jump-in-distance"
-          />
-          <div>
-            Well done! Your score is {totalScore} out of 10.
-          </div>
-        </>
-      )}
+          {totalScore === 10 && (
+            <>
+              <Image
+                src={winner}
+                alt="Winner image for the scoreboard"
+                className="jump-in-distance"
+              />
+              <div>WOW, you got a perfect score!</div>
+              <div>Your score is {totalScore} out of 10.</div>
+            </>
+          )}
+          {totalScore >= 5 && totalScore < 10 && (
+            <>
+              <Image
+                src={trophy}
+                alt="Trophy image for the scoreboard"
+                className="jump-in-distance"
+              />
+              <div>Well done! Your score is {totalScore} out of 10.</div>
+            </>
+          )}
+          {totalScore < 5 && totalScore > 0 && (
+            <>
+              <Image
+                src={donut}
+                alt="Donut stop trying image"
+                className="jump-in-distance"
+              />
+              <div>You will do better next time!</div>
+              <div>Your score is {totalScore} out of 10.</div>
+            </>
+          )}
+          {totalScore === 0 && (
+            <>
+              <Image
+                src={loser}
+                alt="Loser image for the scoreboard"
+                className="jump-in-distance"
+              />
+              <div>Err, better luck next time!</div>
+              <div>Your score is {totalScore} out of 10.</div>
+            </>
+          )}
 
-      {totalScore < 5 && totalScore > 0 && (
-        <>
-          <Image
-            src={donut}
-            alt="Donut stop trying image"
-            className="jump-in-distance"
-          />
-          <div>You will do better next time!</div>
-          <div>Your score is {totalScore} out of 10.</div>
-        </>
+          {accumulativeScore && (
+            <div style={{ marginTop: "1rem" }}>
+              Click{" "}
+              <span
+                onClick={handleSeeYourStats}
+                className="see-your-stats"
+                style={{ color: "blue", cursor: "pointer" }}
+              >
+                here{" "}
+              </span>
+              to see your global statistics.
+            </div>
+          )}
+        </div>
       )}
-
-      {totalScore === 0 && (
-        <>
-          <Image
-            src={loser}
-            alt="Loser image for the scoreboard"
-            className="jump-in-distance"
-          />
-          <div>Err, better luck next time!</div>
-          <div>Your score is {totalScore} out of 10.</div>
-        </>
-      )}
-
-      <div className="breakdown-container">
-        <div style={{ marginTop: "1rem", fontWeight: "bold" }}>Breakdown:</div>
-        {filteredResults.map((results) => (
-          <div key={results[0]}>
-            {results[0]}: {results[1].score}/{results[1].count}
-          </div>
-        ))}
-      </div>
-
       <button onClick={handleReturnToStart} className="play-again-button">
         Play again
       </button>
-    </div>
+    </>
   );
 };
 
