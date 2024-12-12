@@ -84,7 +84,6 @@ code .language-javacript {
   text-wrap: auto;
 }
 
-
 .example-number-text {
   font-size: 0.6rem;
 }
@@ -102,6 +101,7 @@ code .language-javacript {
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
+  min-width: 600px;
 }
 
 .quiz-container-title {
@@ -110,7 +110,6 @@ code .language-javacript {
   justify-content: space-between;
   gap: 1rem;
 }
-
 
 .choices-container {
   display: flex;
@@ -211,6 +210,48 @@ button:disabled {
 
 .play-again-button {
   margin-top: 2rem;
+  width: 600px;
+}
+
+.see-your-stats {
+  color: #0172ad;
+  cursor: pointer;
+}
+
+.see-your-stats:hover {
+  color: #016295;
+}
+
+.stats-outer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-inner-container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-percent {
+  position: relative;
+  top: -65px;
+  left: 3%;
+  font-weight: 600;
+}
+
+.reset-button {
+  background-color: white;
+  color: #000000a3;
 }
 
 /* Loader animation */

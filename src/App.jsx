@@ -247,10 +247,6 @@ function App() {
       ...prevScore, // Keep previous score values
       ...combinedScores, // Add the newly combined scores
     }));
-
-
-    // Log the combined scores for debugging
-    console.log("combinedScores", combinedScores);
   };
 
   const handleSeeScore = () => {
@@ -261,8 +257,6 @@ function App() {
     // Combine scores and update state
     handleCombineScores();
   };
-
-  console.log("accumulativeScore", accumulativeScore)
 
   return (
     <>

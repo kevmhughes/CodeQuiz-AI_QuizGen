@@ -95,20 +95,41 @@ const ScoreView = ({
   return (
     <>
       {showStats ? (
-        <div className="stats-container">
+        <div className="stats-outer-container">
           {!filteredResults && (
-            <div style={{ marginTop: "1rem", fontWeight: "bold" }}>
-              Breakdown:
-            </div>
+            <div></div>
           )}
-          {filteredResults &&
-            filteredResults.map((results) => (
-              <div key={results[0]}>
-                {results[0]}: {results[1].score}/{results[1].count}
-              </div>
-            ))}
-          <button onClick={handleResetYourStats}>
-            reset your statistics here
+          <h1 style={{ marginTop: "1rem", fontWeight: "bold", textAlign:"center", marginBottom:"2rem" }}>
+              Your Global Statistics
+          </h1>
+          <div className="stats-inner-container">
+            {filteredResults &&
+              filteredResults.map((results) => (
+                <div className="stat-container">
+                  <div key={results[0]}>
+                    <b>{results[0]}:</b> {results[1].score}/{results[1].count}
+                  </div>
+                  <div
+                    className="pie"
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      backgroundImage: `conic-gradient(darkgray 0% ${
+                        (results[1].score / results[1].count) * 100
+                      }% , lightgray ${
+                        (results[1].score / results[1].count) * 100
+                      }% 100%)`,
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                  <div className="stat-percent">
+                    {Math.ceil((results[1].score / results[1].count) * 100)}%
+                  </div>
+                </div>
+              ))}
+          </div>
+          <button onClick={handleResetYourStats} className="reset-button">
+            Reset Your Statistics
           </button>
         </div>
       ) : (
@@ -171,7 +192,6 @@ const ScoreView = ({
               <span
                 onClick={handleSeeYourStats}
                 className="see-your-stats"
-                style={{ color: "blue", cursor: "pointer" }}
               >
                 here{" "}
               </span>
@@ -181,7 +201,7 @@ const ScoreView = ({
         </div>
       )}
       <button onClick={handleReturnToStart} className="play-again-button">
-        Play again
+        Play Again
       </button>
     </>
   );
