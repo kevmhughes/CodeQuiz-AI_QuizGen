@@ -11,6 +11,7 @@ const Loader = () => {
         className="rotating-image"
         src={logo}
       />
+      <div>Loading...</div>
     </div>
   );
 };

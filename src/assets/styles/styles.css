@@ -293,6 +293,8 @@ button:disabled {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
+  color: black;
+  gap: 0.5rem;
 }
 
 /* Image jump-in animation */
@@ -386,5 +388,5 @@ img.jump-in-distance {
 
   .start-page-buttons-container {
     width: 13rem;
-}
+  }
 }
