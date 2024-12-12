@@ -211,6 +211,7 @@ button:disabled {
 .play-again-button {
   margin-top: 2rem;
   width: 600px;
+  margin-bottom: 1rem;
 }
 
 .see-your-stats {
@@ -338,8 +339,20 @@ img.jump-in-distance {
     right: 0;
   }
 
+  .quiz-container {
+    min-width: 0;
+  }
+
   .react-markdown-wrapper {
-    font-size: 10px;
+     font-size: 12px;
+  }
+
+  .stats-inner-container {
+    grid-template-columns: 150px 150px;
+  }
+
+  .play-again-button, .reset-button {
+    width: 300px;
   }
 }
 
