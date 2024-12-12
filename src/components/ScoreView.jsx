@@ -115,7 +115,7 @@ const ScoreView = ({
                     style={{
                       width: "80px",
                       height: "80px",
-                      backgroundImage: `conic-gradient(darkgray 0% ${
+                      backgroundImage: `conic-gradient(#4dae4d 0% ${
                         (results[1].score / results[1].count) * 100
                       }% , lightgray ${
                         (results[1].score / results[1].count) * 100

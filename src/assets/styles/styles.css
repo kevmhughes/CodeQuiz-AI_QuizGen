@@ -222,7 +222,7 @@ button:disabled {
 
 .play-again-button {
   margin-top: 2rem;
-  width: 600px;
+  width: 720px;
   margin-bottom: 1rem;
 }
 
@@ -242,7 +242,7 @@ button:disabled {
 
 .stats-inner-container {
   display: grid;
-  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-columns: 180px 180px 180px 180px;
   margin-bottom: 1rem;
   align-items: center;
   justify-content: center;
@@ -331,6 +331,17 @@ img.jump-in-distance {
 }
 
 /* media queries */
+
+@media only screen and (max-width: 1024px) {
+  .play-again-button {
+    width: 600px;
+  }
+  .stats-outer-container {
+    align-items: center;
+  }
+.reset-button {
+  width: 600px;
+}
 
 @media only screen and (max-width: 480px) {
   .codequiz-title-text {
