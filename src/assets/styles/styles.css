@@ -378,3 +378,13 @@ img.jump-in-distance {
     font-size: 11px;
   }
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) and (min-height: 768px) and (max-height: 900px) {
+  .main-logo {
+    width: 15rem;
+  }
+
+  .start-page-buttons-container {
+    width: 13rem;
+}
+}
