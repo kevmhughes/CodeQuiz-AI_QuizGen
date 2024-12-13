@@ -56,6 +56,19 @@ html {
   width: 100%;
 }
 
+.timeout-error-container {
+  height: 100%;
+}
+
+.timeout-error {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  max-width: 400px;
+}
+
 /* stops the overflow of the text in the code examples
  */
 .xml {
@@ -398,7 +411,7 @@ img.jump-in-distance {
     width: 15rem;
   }
 
-  img.jump-in-distance  {
+  img.jump-in-distance {
     width: 20rem;
   }
 

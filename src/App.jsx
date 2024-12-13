@@ -82,6 +82,8 @@ function App() {
   });
   const [showScore, setShowScore] = useState(false);
   const [showStats, setShowStats] = useState(false);
+  const [timeoutError, setTimeoutError] = useState(false);
+  const [showRetryOptions, setShowRetryOptions] = useState(false);
 
   const questionIndex = index;
   const hasFetched = useRef(false); // UseRef to track fetch status
@@ -103,6 +105,12 @@ function App() {
 
     const fetchQuestions = async () => {
       setLoading(true);
+      setTimeoutError(false); // Reset timeout error state
+
+      const timeout = setTimeout(() => {
+        setLoading(false);
+        setTimeoutError(true); // Set timeout error
+      }, 20000); // 20 seconds timeout threshold
 
       try {
         if (AiDb) {
@@ -110,8 +118,8 @@ function App() {
           const response = await axios.get(
             `https://codequestapi.onrender.com/api/v1/questions/ai?amount=${formData.amount}&topic=${formData.topic}`
           );
-
           setQuestions(response.data.results); // Update questions state
+          setError(null); // Reset error if request was successful
         }
 
         if (randomDb) {
@@ -120,19 +128,48 @@ function App() {
             `https://codequestapi.onrender.com/api/v1/questions/random?amount=${formData.amount}`
           );
           setQuestions(response.data.results);
+          setError(null); // Reset error if request was successful
         }
-
-        setError(null); // Reset error if the request was successful
       } catch (error) {
         setError("There was an error fetching the data.");
         console.error("Error fetching data:", error.response);
       } finally {
+        clearTimeout(timeout); // Clear the timeout when request completes
         setLoading(false); // Ensure loading is set to false when request is complete
       }
     };
 
     fetchQuestions();
   }, [formData, AiDb, randomDb, showQuizPage, accumulativeScore]);
+
+  // Handle retry logic
+  const handleRetry = () => {
+    setAiDb(false);
+    setRandomDb(false);
+    setShowQuizPage(false);
+    setTimeoutError(false);
+    setShowForm(false);
+    setShowRetryOptions(false); // Hide retry options
+    setQuestions([]); // Reset questions to avoid showing old data
+  };
+
+  // Timeout error handling
+  if (timeoutError) {
+    return (
+      <div className="timeout-error-container">
+        <div onClick={handleRetry}>
+          <Header logo={logo} />
+        </div>
+        <div className="timeout-error container">
+          <p>
+            The quiz questions are taking too long to generate at the moment.
+            Try again, or use the other quiz option.
+          </p>
+          <button onClick={handleRetry}>Home</button>
+        </div>
+      </div>
+    );
+  }
 
   const questionsToDisplay =
     questions.length > 0 ? questions : backUpArray[0].results;
@@ -201,7 +238,7 @@ function App() {
 
   const handleShowForm = () => {
     setShowForm(true);
-    setRandomDb(false)
+    setRandomDb(false);
     setAiDb(true);
   };
 
@@ -209,7 +246,7 @@ function App() {
     setShowForm(false);
     setShowScore(false);
     setShowStats(false);
-    setRandomDb(false)
+    setRandomDb(false);
     setAiDb(false);
     setIndex(0);
     setShowQuizPage(false);
