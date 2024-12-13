@@ -11,6 +11,7 @@ import ChoicesView from "./components/ChoicesView";
 import QuizView from "./components/QuizView";
 import "./assets/styles/styles.css";
 import logo from "/images/logo/logo.svg";
+import fourzeroeight from "/images/images/408.png"
 import backUpArray from "../src/utils/backUpArray";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
@@ -161,6 +162,7 @@ function App() {
           <Header logo={logo} />
         </div>
         <div className="timeout-error container">
+          <img src={fourzeroeight} alt="408 error image" style={{maxWidth: "70%", marginBottom: "1rem"}}/>
           <p>
             The quiz questions are taking too long to generate at the moment.
             Try again, or use the other quiz option.

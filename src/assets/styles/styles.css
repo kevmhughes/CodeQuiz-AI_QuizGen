@@ -345,6 +345,20 @@ img.jump-in-distance {
 
 /* media queries */
 
+@media only screen and (min-width: 1024px) and (max-width: 1440px) and (min-height: 768px) and (max-height: 900px) {
+  .main-logo {
+    width: 15rem;
+  }
+
+  img.jump-in-distance {
+    width: 20rem;
+  }
+
+  .start-page-buttons-container {
+    width: 13rem;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .play-again-button {
     width: 600px;
@@ -404,18 +418,7 @@ img.jump-in-distance {
   .react-markdown-wrapper {
     font-size: 11px;
   }
-}
-
-@media only screen and (min-width: 1024px) and (max-width: 1440px) and (min-height: 768px) and (max-height: 900px) {
-  .main-logo {
-    width: 15rem;
-  }
-
-  img.jump-in-distance {
-    width: 20rem;
-  }
-
-  .start-page-buttons-container {
-    width: 13rem;
+  .timeout-error {
+    max-width: 320px;
   }
 }
