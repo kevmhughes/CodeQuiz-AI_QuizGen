@@ -51,7 +51,7 @@ const QuizView = ({
         randomDb={randomDb}
         formData={formData}
       />
-      {index + 1 === questions.length && showExplanationButton && (
+      {(index + 1 === questions.length || index === 9 /* for quizzes of 10 questions */) && showExplanationButton && (
         <button onClick={handleSeeScore} className="see-score-button">
           See Your Score
         </button>
