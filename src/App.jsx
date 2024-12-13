@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
@@ -111,7 +112,7 @@ function App() {
       const timeout = setTimeout(() => {
         setLoading(false);
         setTimeoutError(true); // Set timeout error
-      }, 20000); // 20 seconds timeout threshold
+      }, 30000); // 30 seconds timeout threshold
 
       try {
         if (AiDb) {
