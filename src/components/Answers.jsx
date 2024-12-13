@@ -16,13 +16,11 @@ const Answers = ({
   AiDb,
   randomDb,
   formData
-  // testing below
 }) => {
   // Function to handle when an answer is selected
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer); // Store the selected answer
     setShowExplanationButton(true); // Show the explanation button
-    // Convert category into a string (check if it's valid)
 
     let formattedCategory;
 
