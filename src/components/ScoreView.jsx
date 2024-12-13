@@ -124,7 +124,7 @@ const ScoreView = ({
                     }}
                   ></div>
                   <div className="stat-percent">
-                    {Math.ceil((results[1].score / results[1].count) * 100)}%
+                    {Math.round((results[1].score / results[1].count) * 100)}%
                   </div>
                 </div>
               ))}
