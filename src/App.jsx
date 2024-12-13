@@ -112,7 +112,7 @@ function App() {
       const timeout = setTimeout(() => {
         setLoading(false);
         setTimeoutError(true); // Set timeout error
-      }, 30000); // 30 seconds timeout threshold
+      }, 60000); // 60 seconds timeout threshold
 
       try {
         if (AiDb) {
