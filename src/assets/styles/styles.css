@@ -140,6 +140,7 @@ code .language-javacript {
   background-color: #0097b2;
   border-radius: 50px 5px 5px 50px;
   font-size: 2rem;
+  border-color: #0097b2;
 }
 
 .choices-view-button-left:hover {
@@ -156,6 +157,7 @@ code .language-javacript {
   background-color: #004aad;
   border-radius: 5px 50px 50px 5px;
   font-size: 2rem;
+  border-color: #004aad;
 }
 
 .choices-view-button-right:hover {
@@ -414,9 +416,8 @@ img.jump-in-distance {
     width: 300px;
   }
   .quiz-container {
-    width: 80%;
+    width: 100%;
   }
-
 }
 
 @media only screen and (max-width: 375px) {
@@ -425,5 +426,8 @@ img.jump-in-distance {
   }
   .timeout-error {
     max-width: 320px;
+  }
+  .quiz-container {
+    width: 80%;
   }
 }
