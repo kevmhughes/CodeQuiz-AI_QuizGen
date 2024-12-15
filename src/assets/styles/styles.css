@@ -413,6 +413,10 @@ img.jump-in-distance {
   .reset-button {
     width: 300px;
   }
+  .quiz-container {
+    width: 80%;
+  }
+
 }
 
 @media only screen and (max-width: 375px) {
