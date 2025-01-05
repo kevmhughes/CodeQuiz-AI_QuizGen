@@ -91,6 +91,7 @@ When you launch the app, you'll have the option to choose from the following qui
 - **CSS**
 - **DOM**
 - **Express**
+- **Git**
 - **HTML**
 - **JavaScript - Advanced**
 - **JavaScript - Basics**
