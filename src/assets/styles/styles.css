@@ -380,6 +380,7 @@ img.jump-in-distance {
   }
 
   .main-logo {
+    margin-top: 1rem;
     max-width: 15rem;
   }
 
@@ -429,5 +430,8 @@ img.jump-in-distance {
   }
   .quiz-container {
     width: 80%;
+  }
+  .choose-your-quiz-text {
+    margin-top: 3rem;
   }
 }
