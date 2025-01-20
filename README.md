@@ -1,8 +1,8 @@
-# CodeQuiz App (WIP)
+# CodeQuiz App 
 
-Welcome to **CodeQuiz** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **CodeQuiz** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz drawn from a variety of questions stored in a **MongoDB** database. 
+Welcome to **CodeQuiz** — an engaging and interactive quiz app that challenges your knowledge on a wide range of programming and web development topics. **CodeQuiz** lets you select a topic-based quiz powered by AI-generated questions, or you can take a random quiz taken from a variety of questions stored in a **MongoDB** database. 
 
-The topics are designed to help you test your knowledge in various technologies and frameworks, making learning fun and competitive. Whether you are a beginner or an advanced developer, there's a quiz for everyone!
+The topics are designed to help you test your knowledge on various technologies and frameworks, whether you are a beginner or an advanced developer, there's a quiz for everyone!
 
 ---
 
@@ -20,20 +20,20 @@ The topics are designed to help you test your knowledge in various technologies 
 
 ## Introduction
 
-**CodeQuiz** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the  [**CodeQuest API**](https://codequestapi.onrender.com)  and offers a variety of ways to engage with the content:
+**CodeQuiz** is built with **React** and **Vite** for a fast and modern web experience. The app pulls quiz data from the [**CodeQuest API**](https://codequestapi.onrender.com) and offers a variety of ways to engage with the content:
 
-- Choose a **topic-based AI-generated quiz** from a predefined list of topics powered by Google Gemini.
-- Take a **random quiz** pulled from a MongoDB database for even more variety.
-- See your final score.
+- Choose a **topic-based AI-generated quiz** from a predefined list of topics with questions powered by Google Gemini.
+- Take a **random quiz** pulled from a MongoDB database.
+- See your final score and global statistics.
 
 ---
 
 ## Features
 
-- **AI-Generated Quizzes**: Automatically generates quizzes on various topics using the **CodeQuest API**.
+- **AI-Generated Quizzes**: Automatically generated quizzes on various topics using the **CodeQuest API**.
 - **MongoDB Quizzes**: Access random quizzes stored in MongoDB for a more diverse experience.
 - **Responsive Design**: The app is fully responsive, so you can enjoy it on desktop and mobile devices.
-- **Real-time Scoring**: View your score after each quiz.
+- **Real-time Scoring**: View your score after each quiz as well as your global statistics over time.
 
 ---
 
@@ -51,7 +51,6 @@ The topics are designed to help you test your knowledge in various technologies 
 - **Other Libraries**:
   - **Axios** – For making API requests to fetch quizzes.
   - **JWT (JSON Web Tokens)** – For managing user authentication.
-  - **Chart.js** – For visualizing quiz performance and results.
 
 ---
 
@@ -91,6 +90,7 @@ When you launch the app, you'll have the option to choose from the following qui
 - **CSS**
 - **DOM**
 - **Express**
+- **Git**
 - **HTML**
 - **JavaScript - Advanced**
 - **JavaScript - Basics**
@@ -103,7 +103,7 @@ When you launch the app, you'll have the option to choose from the following qui
 - **TypeScript**
 - **Vue**
 
-Simply select the topic you want to be quizzed on, and the app will fetch ten relevant questions from the **CodeQuest API** or serve up a random quiz from the MongoDB database if you're feeling spontaneous!
+Simply select the topic you want to be quizzed on, and the app will fetch ten relevant questions from the **CodeQuest API**. Alternatively, the app can serve up a random quiz from the MongoDB database if you're feeling spontaneous!
 
 ---
 
@@ -117,6 +117,8 @@ CB: **Random Quiz**: Get a random quiz question from a variety of topics stored 
 2. **Answer the Questions**: Each quiz displays a series of multiple-choice questions. Select your answers to proceed through the quiz.
 
 3. **View Results**: After completing the quiz, you'll receive your score.
+   
+4. **Access Your Global Statistics**: See your development and gllobal scores over time. 
 
 ---
 
